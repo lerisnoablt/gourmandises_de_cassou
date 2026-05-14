@@ -1,0 +1,224 @@
+# CHECKLIST DE TEST AVANT MISE EN LIGNE
+
+Cette checklist sert à vérifier que le site est prêt avant de le publier.
+
+---
+
+## 1. Vérification générale
+
+À tester sur ordinateur et surtout sur téléphone :
+
+- ouvrir `index.html` ;
+- vérifier que le site s’affiche correctement ;
+- vérifier que le haut du site est propre ;
+- vérifier que les boutons ne sont pas trop petits ;
+- vérifier que le site reste lisible en mode clair ;
+- vérifier que le site reste lisible en mode sombre.
+
+---
+
+## 2. Page d’accueil
+
+À vérifier :
+
+- le bouton `Choisir une catégorie` fonctionne ;
+- la carte `Crêpes` ouvre bien la page crêpes ;
+- la carte `Gaufres` ouvre bien la page gaufres ;
+- la carte `Milk-shakes` ouvre bien la page milk-shakes ;
+- la carte `Jus locaux` ouvre bien la page jus locaux ;
+- l’image des milk-shakes est bien différente de l’image des jus locaux ;
+- le mot `monbin` est bien écrit correctement ;
+- la localisation est cliquable.
+
+---
+
+## 3. Page Crêpes
+
+À vérifier :
+
+- les crêpes s’affichent ;
+- les mini images s’affichent ;
+- le bouton `+` ajoute une crêpe au panier ;
+- le bouton `−` retire une crêpe du panier ;
+- le bouton `Voir mon panier` ouvre la page paiement ;
+- le panier garde la crêpe ajoutée.
+
+---
+
+## 4. Page Gaufres
+
+À vérifier :
+
+- les gaufres s’affichent ;
+- les mini images s’affichent ;
+- les boutons `+` et `−` fonctionnent ;
+- une gaufre ajoutée apparaît bien dans le panier.
+
+---
+
+## 5. Page Milk-shakes
+
+À vérifier :
+
+- les milk-shakes s’affichent ;
+- l’image principale montre bien des milk-shakes ;
+- les mini images s’affichent ;
+- les boutons `+` et `−` fonctionnent ;
+- les parfums sont corrects :
+  - fraise ;
+  - Nutella ;
+  - Oreo ;
+  - vanille ;
+  - Spéculoos ;
+  - M&M’s.
+
+---
+
+## 6. Page Jus locaux
+
+À vérifier :
+
+- les jus locaux s’affichent ;
+- l’image principale montre bien des jus ;
+- les mini images s’affichent ;
+- les boutons `+` et `−` fonctionnent ;
+- les parfums sont corrects :
+  - cerise ;
+  - gingembre ;
+  - monbin.
+
+---
+
+## 7. Page Formules
+
+À vérifier :
+
+- la formule crêpe + milk-shake s’affiche ;
+- la formule gaufre + milk-shake s’affiche ;
+- on peut choisir la crêpe dans la formule ;
+- on peut choisir la gaufre dans la formule ;
+- on peut choisir le milk-shake ;
+- le bouton `Ajouter` ajoute bien la formule au panier ;
+- le panier affiche bien les choix de la formule.
+
+Exemple attendu dans le panier :
+
+`Formule crêpe + milk-shake`
+`Crêpe Nutella + Milk-shake Oreo`
+
+---
+
+## 8. Page Panier & paiement
+
+À vérifier :
+
+- les produits ajoutés apparaissent ;
+- les quantités sont correctes ;
+- le total est correct ;
+- le bouton `−1` fonctionne ;
+- le bouton `+1` fonctionne ;
+- le bouton `Supprimer` fonctionne ;
+- le bouton `Vider le panier` fonctionne ;
+- le mode de paiement peut être changé ;
+- le prénom peut être écrit ;
+- l’heure de retrait peut être écrite ;
+- une remarque peut être ajoutée.
+
+---
+
+## 9. WhatsApp
+
+À vérifier avec une commande test :
+
+1. ajoute plusieurs produits ;
+2. ajoute une formule ;
+3. va dans le panier ;
+4. écris un prénom ;
+5. écris une heure de retrait ;
+6. choisis un paiement ;
+7. ajoute une remarque ;
+8. clique sur `Envoyer la commande sur WhatsApp`.
+
+Le message WhatsApp doit contenir :
+
+- les produits ;
+- les quantités ;
+- les choix de formules ;
+- le total ;
+- le prénom ;
+- l’heure de retrait ;
+- le paiement ;
+- la remarque.
+
+---
+
+## 10. PayPal et Revolut
+
+Pour l’instant, les boutons sont prêts mais les liens doivent être ajoutés dans `config.js`.
+
+À tester après avoir ajouté les vrais liens :
+
+- choisir PayPal ;
+- cliquer sur `Ouvrir PayPal` ;
+- vérifier que le bon lien s’ouvre ;
+- choisir Revolut ;
+- cliquer sur `Ouvrir Revolut` ;
+- vérifier que le bon lien s’ouvre.
+
+---
+
+## 11. Snapchat et localisation
+
+À tester après avoir ajouté les vrais liens dans `config.js` :
+
+- le lien Snapchat ouvre bien le bon compte ;
+- le lien Google Maps ouvre bien la bonne position ;
+- le texte de localisation affiché est correct.
+
+---
+
+## 12. Mode clair / mode sombre
+
+À vérifier :
+
+- cliquer sur le bouton en bas de page ;
+- le site passe en mode sombre ;
+- recliquer ;
+- le site repasse en mode clair ;
+- changer de page ;
+- le choix du thème reste sauvegardé.
+
+---
+
+## 13. Test sur téléphone
+
+Très important.
+
+À vérifier sur téléphone :
+
+- le site est lisible ;
+- les cartes ne sont pas cassées ;
+- les images ne débordent pas ;
+- les boutons sont faciles à toucher ;
+- le panier fonctionne ;
+- WhatsApp s’ouvre correctement.
+
+---
+
+## 14. Avant publication
+
+Avant de publier, vérifier :
+
+- numéro WhatsApp ;
+- lien Snapchat ;
+- lien Google Maps ;
+- lien PayPal si utilisé ;
+- lien Revolut si utilisé ;
+- prix ;
+- noms des produits ;
+- horaires ;
+- orthographe ;
+- fonctionnement du panier ;
+- message WhatsApp ;
+- affichage mobile.
+

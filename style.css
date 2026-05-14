@@ -204,3 +204,17 @@ body.dark-mode footer{
 .theme-toggle:hover{
   background:rgba(255,255,255,.14);
 }
+
+
+.item-head{display:flex;gap:14px;align-items:flex-start}
+.item-thumb{
+  width:72px;height:72px;flex:0 0 72px;object-fit:cover;
+  border-radius:18px;border:1px solid var(--border);background:#fff;
+  box-shadow:0 8px 16px rgba(83,45,19,.08)
+}
+.item-main{flex:1;min-width:0}
+.item-main .row-top{margin-bottom:8px}
+body.dark-mode .item-thumb{background:#20171b}
+@media(max-width:650px){
+  .item-thumb{width:64px;height:64px;flex-basis:64px}
+}

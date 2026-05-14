@@ -60,12 +60,17 @@ function renderProductCard(product){
 
   return `
     <article class="item">
-      <div class="row-top">
-        <h3>${product.name}</h3>
-        <div class="price">${formatPrice(product.price)}</div>
+      <div class="item-head">
+        <img class="item-thumb" src="${product.thumb || 'hero.png'}" alt="${product.name}">
+        <div class="item-main">
+          <div class="row-top">
+            <h3>${product.name}</h3>
+            <div class="price">${formatPrice(product.price)}</div>
+          </div>
+          <span class="badge">${product.badge}</span>
+          <p>${product.desc}</p>
+        </div>
       </div>
-      <span class="badge">${product.badge}</span>
-      <p>${product.desc}</p>
       <div class="controls">
         <div class="qty">
           <button onclick="changeSimpleProduct('${product.id}', -1)" aria-label="Retirer">−</button>
@@ -80,12 +85,17 @@ function renderProductCard(product){
 function renderComboCard(combo){
   return `
     <article class="item">
-      <div class="row-top">
-        <h3>${combo.name}</h3>
-        <div class="price">${formatPrice(combo.price)}</div>
+      <div class="item-head">
+        <img class="item-thumb" src="${combo.thumb || 'hero.png'}" alt="${combo.name}">
+        <div class="item-main">
+          <div class="row-top">
+            <h3>${combo.name}</h3>
+            <div class="price">${formatPrice(combo.price)}</div>
+          </div>
+          <span class="badge">${combo.badge}</span>
+          <p>${combo.desc}</p>
+        </div>
       </div>
-      <span class="badge">${combo.badge}</span>
-      <p>${combo.desc}</p>
       <div class="option-group">
         <div>
           <label for="${combo.id}-choice1">${combo.choice1Label}</label>
