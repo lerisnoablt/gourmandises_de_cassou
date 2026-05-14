@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Gourmandises de Cassou — Commande en ligne</title>
+  <style>
+    :root {
+      --bg: #fff7ee;
+      --card: #ffffff;
+      --text: #24150f;
+      --muted: #7b6258;
+      --pink: #d72678;
+      --pink-dark: #a9165a;
+      --yellow: #f3bb2e;
+      --border: #f0d8c7;
+      --shadow: 0 18px 45px rgba(66, 35, 12, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top left, #ffe4ec 0, transparent 36%), var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255, 247, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: 1100px; margin: auto; padding: 14px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand {
+      display: flex; flex-direction: column; line-height: 1.1;
+      font-weight: 900; letter-spacing: -0.03em;
+    }
+    .brand small { color: var(--pink); font-weight: 800; letter-spacing: 0; margin-top: 3px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn {
+      border: 0; border-radius: 999px; padding: 12px 17px; font-weight: 800;
+      cursor: pointer; transition: 0.18s transform, 0.18s box-shadow, 0.18s background;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--pink); color: white; box-shadow: 0 10px 25px rgba(215,38,120,.25); }
+    .btn-primary:hover { background: var(--pink-dark); }
+    .btn-soft { background: #fff; color: var(--pink); border: 1px solid var(--border); }
+    .hero {
+      max-width: 1100px; margin: auto; padding: 54px 18px 28px;
+      display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 28px;
+    }
+    .hero-card {
+      background: linear-gradient(135deg,#fff 0%,#fff2df 100%);
+      border: 1px solid var(--border); border-radius: 34px; padding: 34px; box-shadow: var(--shadow);
+    }
+    .tag {
+      display: inline-flex; background: #111; color: white; padding: 9px 14px;
+      border-radius: 999px; font-size: 14px; font-weight: 900; margin-bottom: 18px;
+    }
+    h1 { margin: 0; font-size: clamp(36px, 7vw, 72px); line-height: .93; letter-spacing: -.07em; }
+    .hero p { margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
+    .hero-highlight { display: grid; gap: 14px; }
+    .highlight-box { background: #111; color: white; border-radius: 28px; padding: 24px; box-shadow: var(--shadow); }
+    .highlight-box b { color: var(--yellow); font-size: 36px; }
+    .info-grid {
+      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin-top: 18px;
+    }
+    .info {
+      background: #fff; border: 1px solid var(--border); border-radius: 24px;
+      padding: 18px; color: var(--muted); font-weight: 700;
+    }
+    .section { max-width: 1100px; margin: auto; padding: 28px 18px; }
+    .section-title { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    h2 { margin: 0; font-size: 34px; letter-spacing: -.04em; }
+    .category-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 18px; }
+    .tab {
+      border: 1px solid var(--border); background: white; color: var(--text);
+      padding: 10px 15px; border-radius: 999px; font-weight: 800; cursor: pointer; white-space: nowrap;
+    }
+    .tab.active { background: var(--pink); color: white; border-color: var(--pink); }
+    .menu-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+    .item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 26px; padding: 18px;
+      box-shadow: 0 10px 25px rgba(66,35,12,.07);
+      display: flex; flex-direction: column; gap: 12px; min-height: 160px;
+    }
+    .item-top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+    .item h3 { margin: 0; font-size: 19px; line-height: 1.2; }
+    .price { color: var(--pink); font-weight: 900; font-size: 22px; white-space: nowrap; }
+    .item p { margin: 0; color: var(--muted); line-height: 1.45; flex: 1; }
+    .qty { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
+    .qty button {
+      width: 38px; height: 38px; border-radius: 50%; border: 0; background: #fff0f6;
+      color: var(--pink); font-size: 22px; font-weight: 900; cursor: pointer;
+    }
+    .qty span { min-width: 26px; text-align: center; font-weight: 900; }
+    .cart-layout { display: grid; grid-template-columns: 1fr 380px; gap: 18px; align-items: start; }
+    .cart-card, .form-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 28px; padding: 22px; box-shadow: var(--shadow);
+    }
+    .cart-line {
+      display: flex; justify-content: space-between; gap: 12px; padding: 12px 0;
+      border-bottom: 1px dashed var(--border); color: var(--muted); font-weight: 700;
+    }
+    .cart-line:last-child { border-bottom: 0; }
+    .total {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px;
+      border-top: 2px solid var(--border); font-size: 24px; font-weight: 900;
+    }
+    label { display: block; font-weight: 900; margin: 13px 0 7px; }
+    input, textarea, select {
+      width: 100%; border: 1px solid var(--border); border-radius: 16px; padding: 13px 14px;
+      font: inherit; background: #fffaf5; outline: none;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .checkout-btn { width: 100%; margin-top: 16px; font-size: 16px; padding: 15px; }
+    .note { color: var(--muted); font-size: 14px; line-height: 1.45; margin-top: 12px; }
+    footer { margin-top: 36px; padding: 34px 18px; background: #111; color: white; }
+    footer .footer-inner { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+    footer b { color: var(--yellow); }
+    footer p { color: #ddd; line-height: 1.5; }
+    .floating-cart { position: fixed; right: 18px; bottom: 18px; z-index: 40; display: none; }
+    @media (max-width: 850px) {
+      .hero, .cart-layout { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      footer .footer-inner { grid-template-columns: 1fr; }
+      .nav-actions .btn-soft { display: none; }
+      .floating-cart { display: block; }
+    }
+    @media (max-width: 560px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .hero-card { padding: 24px; border-radius: 26px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .section-title { align-items: start; flex-direction: column; }
+      h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#top">Les Gourmandises de Cassou<small>Commande rapide</small></a>
+      <div class="nav-actions">
+        <a class="btn btn-soft" href="#menu">Voir le menu</a>
+        <a class="btn btn-primary" href="#commande">Commander</a>
+      </div>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="tag">Mercredi 13 mai 2026 · à partir de 15h</span>
+        <h1>Crêpes, gaufres & milk-shakes</h1>
+        <p>Choisis tes gourmandises, indique ton heure de retrait, puis envoie ta commande directement sur WhatsApp.</p>
+        <div class="info-grid">
+          <div class="info">📍 Cité Lumière, Kourou</div>
+          <div class="info">💳 Paiement carte ou espèces</div>
+          <div class="info">📞 06 94 13 06 40</div>
+          <div class="info">🥤 Jus local disponible</div>
+        </div>
+      </div>
+      <div class="hero-highlight">
+        <div class="highlight-box"><div>Formule crêpe + milkshake</div><b>6€</b></div>
+        <div class="highlight-box"><div>Formule gaufre + milkshake</div><b>8€</b></div>
+      </div>
+    </section>
+    <section class="section" id="menu">
+      <div class="section-title">
+        <div><h2>Menu</h2><p class="note">Ajoute les produits au panier, puis valide ta commande.</p></div>
+      </div>
+      <div class="category-tabs" id="tabs"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+    <section class="section" id="commande">
+      <div class="section-title">
+        <div><h2>Commande</h2><p class="note">La commande sera envoyée sur WhatsApp. Paiement sur place.</p></div>
+      </div>
+      <div class="cart-layout">
+        <div class="cart-card">
+          <h2>Ton panier</h2>
+          <div id="cartLines"></div>
+          <div class="total"><span>Total</span><span id="totalPrice">0€</span></div>
+          <button class="btn btn-soft checkout-btn" id="clearCart">Vider le panier</button>
+        </div>
+        <div class="form-card">
+          <h2>Infos retrait</h2>
+          <label for="name">Prénom</label><input id="name" placeholder="Ex : Lerisno" />
+          <label for="pickup">Heure de retrait souhaitée</label><input id="pickup" placeholder="Ex : 16h30" />
+          <label for="payment">Paiement</label>
+          <select id="payment"><option>Sur place — espèces</option><option>Sur place — carte</option></select>
+          <label for="notes">Remarque</label><textarea id="notes" placeholder="Ex : sans chantilly, bien chaud, etc."></textarea>
+          <button class="btn btn-primary checkout-btn" id="whatsappBtn">Envoyer la commande sur WhatsApp</button>
+          <p class="note">Après le clic, WhatsApp s’ouvre avec le message de commande prêt à envoyer.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <a class="btn btn-primary floating-cart" href="#commande" id="floatingCart">Panier · 0€</a>
+  <footer>
+    <div class="footer-inner">
+      <div><h3>Les Gourmandises de Cassou</h3><p>Crêpes, gaufres, milk-shakes et jus local à Kourou.</p></div>
+      <div><h3>Contact</h3><p><b>Téléphone :</b> 06 94 13 06 40<br><b>Snap :</b> cassougourmandi</p></div>
+      <div><h3>Infos</h3><p><b>Lieu :</b> Cité Lumière, Kourou<br><b>Horaires :</b> à partir de 15h</p></div>
+    </div>
+  </footer>
+  <script>
+    const WHATSAPP_NUMBER = "594694130640";
+    const products = [
+      { category: "Crêpes", name: "Crêpe steak jambon fromage", price: 6, desc: "Crêpe salée complète et gourmande." },
+      { category: "Crêpes", name: "Crêpe jambon fromage", price: 4, desc: "Classique, simple et efficace." },
+      { category: "Crêpes", name: "Crêpe steak fromage", price: 5, desc: "Crêpe salée avec steak et fromage." },
+      { category: "Crêpes", name: "Crêpe Nutella", price: 3.5, desc: "Crêpe sucrée au Nutella." },
+      { category: "Crêpes", name: "Crêpe au miel", price: 3, desc: "Crêpe sucrée au miel." },
+      { category: "Crêpes", name: "Crêpe sucre", price: 2.5, desc: "Crêpe sucrée simple." },
+      { category: "Gaufres", name: "Gaufre Nutella", price: 5, desc: "Gaufre généreuse au Nutella." },
+      { category: "Gaufres", name: "Gaufre miel", price: 5, desc: "Gaufre sucrée au miel." },
+      { category: "Gaufres", name: "Gaufre sucre", price: 5, desc: "Gaufre sucrée simple." },
+      { category: "Gaufres", name: "Gaufre + boule de glace", price: 7, desc: "Gaufre avec boule de glace au choix." },
+      { category: "Milk-shakes", name: "Milk-shake fraise", price: 5, desc: "Milk-shake frais et gourmand." },
+      { category: "Milk-shakes", name: "Milk-shake Nutella", price: 5, desc: "Milk-shake au Nutella." },
+      { category: "Milk-shakes", name: "Milk-shake Oreo", price: 5, desc: "Milk-shake aux biscuits Oreo." },
+      { category: "Milk-shakes", name: "Milk-shake vanille", price: 5, desc: "Milk-shake classique à la vanille." },
+      { category: "Milk-shakes", name: "Milk-shake Spéculoos", price: 5, desc: "Milk-shake au goût spéculoos." },
+      { category: "Milk-shakes", name: "Milk-shake M&M’s", price: 5, desc: "Milk-shake gourmand aux M&M’s." },
+      { category: "Jus local", name: "Jus local — petite bouteille", price: 2.5, desc: "Parfum cerise, gingembre, mobin." },
+      { category: "Formules", name: "Formule crêpe + milkshake", price: 6, desc: "1 crêpe sucrée + 1 milk-shake." },
+      { category: "Formules", name: "Formule gaufre + milkshake", price: 8, desc: "1 gaufre + 1 milk-shake." }
+    ];
+    const categories = ["Tout", ...new Set(products.map(p => p.category))];
+    const cart = {};
+    let activeCategory = "Tout";
+    function formatPrice(value) {
+      return value.toLocaleString("fr-FR", { minimumFractionDigits: value % 1 ? 2 : 0, maximumFractionDigits: 2 }) + "€";
+    }
+    function renderTabs() {
+      document.getElementById("tabs").innerHTML = categories.map(category => `<button class="tab ${category === activeCategory ? "active" : ""}" onclick="setCategory('${category}')">${category}</button>`).join("");
+    }
+    function setCategory(category) { activeCategory = category; renderTabs(); renderMenu(); }
+    function safeName(name) { return name.replace(/'/g, "\\'"); }
+    function renderMenu() {
+      const filtered = activeCategory === "Tout" ? products : products.filter(p => p.category === activeCategory);
+      document.getElementById("menuGrid").innerHTML = filtered.map((p) => {
+        const qty = cart[p.name]?.qty || 0;
+        return `<article class="item"><div class="item-top"><h3>${p.name}</h3><div class="price">${formatPrice(p.price)}</div></div><p>${p.desc}</p><div class="qty"><button aria-label="Retirer" onclick="changeQty('${safeName(p.name)}', -1)">−</button><span>${qty}</span><button aria-label="Ajouter" onclick="changeQty('${safeName(p.name)}', 1)">+</button></div></article>`;
+      }).join("");
+    }
+    function changeQty(name, delta) {
+      const product = products.find(p => p.name === name);
+      if (!product) return;
+      if (!cart[name]) cart[name] = { ...product, qty: 0 };
+      cart[name].qty += delta;
+      if (cart[name].qty <= 0) delete cart[name];
+      renderMenu(); renderCart();
+    }
+    function getCartItems() { return Object.values(cart).filter(item => item.qty > 0); }
+    function getTotal() { return getCartItems().reduce((sum, item) => sum + item.price * item.qty, 0); }
+    function renderCart() {
+      const items = getCartItems();
+      document.getElementById("cartLines").innerHTML = !items.length ? `<p class="note">Ton panier est vide pour l’instant.</p>` : items.map(item => `<div class="cart-line"><span>${item.qty} × ${item.name}</span><strong>${formatPrice(item.qty * item.price)}</strong></div>`).join("");
+      document.getElementById("totalPrice").textContent = formatPrice(getTotal());
+      document.getElementById("floatingCart").textContent = `Panier · ${formatPrice(getTotal())}`;
+    }
+    function buildWhatsAppMessage() {
+      const name = document.getElementById("name").value.trim();
+      const pickup = document.getElementById("pickup").value.trim();
+      const payment = document.getElementById("payment").value;
+      const notes = document.getElementById("notes").value.trim();
+      let message = "Bonjour, je souhaite commander :\n\n";
+      getCartItems().forEach(item => { message += `- ${item.qty} x ${item.name} — ${formatPrice(item.qty * item.price)}\n`; });
+      message += `\nTotal : ${formatPrice(getTotal())}\nPrénom : ${name || "à préciser"}\nHeure de retrait : ${pickup || "à préciser"}\nPaiement : ${payment}\n`;
+      if (notes) message += `Remarque : ${notes}\n`;
+      return message;
+    }
+    document.getElementById("whatsappBtn").addEventListener("click", () => {
+      if (!getCartItems().length) { alert("Ajoute au moins un produit au panier avant de commander."); return; }
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage())}`;
+      window.open(url, "_blank");
+    });
+    document.getElementById("clearCart").addEventListener("click", () => {
+      Object.keys(cart).forEach(key => delete cart[key]);
+      renderMenu(); renderCart();
+    });
+    renderTabs(); renderMenu(); renderCart();
+  </script>
+</body>
+</html>
