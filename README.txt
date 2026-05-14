@@ -27,3 +27,12 @@ Dans config.js :
 - revolutUrl
 - whatsappNumber
 - locationText
+
+
+VERSION 6 :
+- Ajout d’un bouton en bas de page pour basculer entre mode clair et mode sombre.
+- Le choix du client est sauvegardé dans le navigateur.
+- Dans config.js, tu peux choisir le thème par défaut :
+  defaultTheme: "light"
+  ou
+  defaultTheme: "dark"

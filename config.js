@@ -6,7 +6,10 @@ const CONFIG = {
   paypalUrl: "",
   revolutUrl: "",
   openingText: "Ouvert tous les jours · à partir de 15h",
-  locationText: "Cité Lumière, Kourou"
+  locationText: "Cité Lumière, Kourou",
+
+  // Thème par défaut : "light" ou "dark"
+  defaultTheme: "light"
 };
 
 const PRODUCTS = [

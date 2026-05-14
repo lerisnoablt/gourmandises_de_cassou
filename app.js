@@ -289,7 +289,30 @@ function refreshPage(){
   updatePaymentHelp();
 }
 
+
+function getSavedTheme(){
+  return localStorage.getItem("cassou_theme") || CONFIG.defaultTheme || "light";
+}
+
+function applyTheme(theme){
+  const finalTheme = theme === "dark" ? "dark" : "light";
+  document.body.classList.toggle("dark-mode", finalTheme === "dark");
+  localStorage.setItem("cassou_theme", finalTheme);
+
+  const button = document.getElementById("themeToggle");
+  if(button){
+    button.textContent = finalTheme === "dark" ? "☀️ Mode clair" : "🌙 Mode sombre";
+  }
+}
+
+function toggleTheme(){
+  const current = document.body.classList.contains("dark-mode") ? "dark" : "light";
+  applyTheme(current === "dark" ? "light" : "dark");
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
+  applyTheme(getSavedTheme());
   applyConfig();
   refreshPage();
 
@@ -299,4 +322,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("paypalBtn")?.addEventListener("click", () => openPayment("PayPal"));
   document.getElementById("revolutBtn")?.addEventListener("click", () => openPayment("Revolut"));
   document.getElementById("payment")?.addEventListener("change", updatePaymentHelp);
+  document.getElementById("themeToggle")?.addEventListener("click", toggleTheme);
 });
