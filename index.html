@@ -84,6 +84,10 @@
       background:#fff;border:1px solid var(--border);border-radius:20px;
       padding:15px;font-weight:700;color:var(--muted)
     }
+    .info-chip.map-link{
+      color:var(--pink);
+      cursor:pointer;
+    }
     .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
     .hero-visual img{width:100%;height:100%;object-fit:cover}
     .section{padding:18px 0}
@@ -95,12 +99,13 @@
     }
     .special-card{
       background:#fff;border:1px solid var(--border);border-radius:26px;
-      overflow:hidden;box-shadow:var(--shadow)
+      overflow:hidden;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;
     }
     .special-card img{height:220px;width:100%;object-fit:cover}
-    .special-card .content{padding:16px}
-    .special-card h3{margin:0 0 8px}
-    .special-card p{margin:0;color:var(--muted);line-height:1.5}
+    .special-card .content{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .special-card h3{margin:0}
+    .special-card p{margin:0;color:var(--muted);line-height:1.5;flex:1}
     .tabs{
       display:flex;gap:10px;overflow:auto;padding-bottom:8px;margin-bottom:18px
     }
@@ -157,7 +162,7 @@
     .cart-line:last-child{border-bottom:0}
     .cart-line strong{display:block}
     .cart-line small{display:block;color:var(--muted);margin-top:4px;line-height:1.45}
-    .line-actions{display:flex;align-items:center;gap:8px;margin-top:8px}
+    .line-actions{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
     .line-actions button{
       border:0;background:#fff1f7;color:var(--pink);padding:7px 10px;border-radius:999px;
       font-weight:900;cursor:pointer
@@ -188,6 +193,7 @@
     footer h3{margin-top:0}
     footer p{color:#ddd;line-height:1.6}
     footer b{color:var(--gold)}
+    footer a{color:#fff;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
     .floating{
       position:fixed;right:18px;bottom:18px;z-index:60;display:none
     }
@@ -224,17 +230,19 @@
     <div class="container">
       <section class="hero">
         <div class="hero-copy">
-          <span class="tag">Mercredi 13 mai 2026 · à partir de 15h</span>
+          <span class="tag">Ouvert tous les jours · à partir de 15h</span>
           <h1>Crêpes, gaufres, milk-shakes & jus locaux</h1>
           <p class="lead">
             Choisis tes produits, personnalise tes formules, puis envoie ta commande directement sur WhatsApp.
-            Paiement possible sur place, et l’option PayPal / Revolut peut être activée.
+            Paiement possible sur place, par carte, espèces, PayPal ou Revolut.
           </p>
           <div class="hero-info">
-            <div class="info-chip">📍 Cité Lumière, Kourou</div>
+            <a class="info-chip map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Cit%C3%A9%20Lumi%C3%A8re%2C%20Kourou%2C%20Guyane">
+              📍 Cité Lumière, Kourou — ouvrir la carte
+            </a>
             <div class="info-chip">📞 06 94 13 06 40</div>
             <div class="info-chip">💳 Carte, espèces, PayPal ou Revolut</div>
-            <div class="info-chip">⏰ Retrait à partir de 15h</div>
+            <div class="info-chip">⏰ Commandes à partir de 15h</div>
           </div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#commande">Je commande</a>
@@ -242,37 +250,40 @@
           </div>
         </div>
         <div class="hero-visual">
-          <img src="hero-illustration.png" alt="Illustration gourmande crêpes, gaufres et milk-shakes">
+          <img src="hero-illustration.png" alt="Crêpes, gaufres et milk-shakes">
         </div>
       </section>
 
       <section class="section" id="specialites">
         <div class="section-head">
           <div>
-            <h2>Illustrations & spécialités</h2>
-            <p>J’ai ajouté des visuels pour rendre le site plus vivant et plus pro.</p>
+            <h2>Nos spécialités</h2>
+            <p>Choisis une catégorie pour aller directement au menu correspondant.</p>
           </div>
         </div>
         <div class="specials">
           <article class="special-card">
-            <img src="crepe-illustration.png" alt="Illustration crêpe">
+            <img src="crepe-illustration.png" alt="Crêpes gourmandes">
             <div class="content">
               <h3>Crêpes</h3>
-              <p>Sucrées ou salées, avec plusieurs choix selon l’envie.</p>
+              <p>Des crêpes sucrées ou salées, préparées pour les petites et grosses faims.</p>
+              <button class="btn btn-soft" onclick="goToCategory('Crêpes')">Voir les crêpes</button>
             </div>
           </article>
           <article class="special-card">
-            <img src="waffle-illustration.png" alt="Illustration gaufre">
+            <img src="waffle-illustration.png" alt="Gaufres gourmandes">
             <div class="content">
               <h3>Gaufres</h3>
-              <p>Avec Nutella, miel, sucre, ou version glace pour les plus gourmands.</p>
+              <p>Gaufres au sucre, miel, Nutella, ou avec une boule de glace au choix.</p>
+              <button class="btn btn-soft" onclick="goToCategory('Gaufres')">Voir les gaufres</button>
             </div>
           </article>
           <article class="special-card">
-            <img src="drinks-illustration.png" alt="Illustration boissons">
+            <img src="drinks-illustration.png" alt="Milk-shakes et jus locaux">
             <div class="content">
-              <h3>Milk-shakes & jus</h3>
-              <p>Milk-shakes variés et jus locaux désormais séparés par parfum.</p>
+              <h3>Milk-shakes & jus locaux</h3>
+              <p>Milk-shakes gourmands et jus locaux en petite bouteille selon les parfums disponibles.</p>
+              <button class="btn btn-soft" onclick="goToCategory('Milk-shakes')">Voir les boissons</button>
             </div>
           </article>
         </div>
@@ -282,7 +293,7 @@
         <div class="section-head">
           <div>
             <h2>Menu</h2>
-            <p>Les jus sont séparés, et les formules sont maintenant personnalisables.</p>
+            <p>Ajoute tes produits au panier. Pour les formules, choisis ta crêpe ou ta gaufre avec ton milk-shake.</p>
           </div>
         </div>
         <div class="tabs" id="tabs"></div>
@@ -293,7 +304,7 @@
         <div class="section-head">
           <div>
             <h2>Commande</h2>
-            <p>Une fois ton panier prêt, tu peux payer puis envoyer le résumé sur WhatsApp.</p>
+            <p>Vérifie ton panier, indique ton prénom et ton heure de retrait, puis envoie la commande.</p>
           </div>
         </div>
 
@@ -306,10 +317,9 @@
               <span id="totalPrice">0€</span>
             </div>
             <div class="pay-box">
-              <strong>Paiement en ligne</strong>
+              <strong>Paiement</strong>
               <p class="note">
-                Les boutons PayPal et Revolut sont prêts. Il suffit de remplacer les liens dans le fichier
-                <b>index.html</b> avec ton vrai lien <b>paypal.me</b> et ton vrai lien <b>revolut.me</b>.
+                Tu peux payer sur place en espèces ou par carte. Le paiement PayPal ou Revolut est aussi possible si l’option est disponible au moment de la commande.
               </p>
             </div>
             <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
@@ -321,7 +331,7 @@
           <div class="card">
             <h2>Infos client</h2>
             <label for="name">Prénom</label>
-            <input id="name" placeholder="Ex : Lerisno">
+            <input id="name" placeholder="Ex : Sarah">
 
             <label for="pickup">Heure de retrait souhaitée</label>
             <input id="pickup" placeholder="Ex : 16h30">
@@ -335,24 +345,24 @@
             </select>
 
             <div class="pay-box" id="onlinePayBox">
-              <strong>Paiement sélectionné</strong>
+              <strong>Paiement en ligne</strong>
               <p class="note" id="paymentHelp">
-                Si tu choisis PayPal ou Revolut, tu peux ouvrir le lien de paiement avant d’envoyer la commande.
+                Si tu choisis PayPal ou Revolut, ouvre le paiement avant d’envoyer la commande sur WhatsApp.
               </p>
               <div class="pay-buttons">
-                <button class="btn btn-soft" id="paypalBtn" type="button">Payer avec PayPal</button>
-                <button class="btn btn-soft" id="revolutBtn" type="button">Payer avec Revolut</button>
+                <button class="btn btn-soft" id="paypalBtn" type="button">Ouvrir PayPal</button>
+                <button class="btn btn-soft" id="revolutBtn" type="button">Ouvrir Revolut</button>
               </div>
             </div>
 
             <label for="notes">Remarque</label>
-            <textarea id="notes" placeholder="Ex : sans chantilly, bien chaud, etc."></textarea>
+            <textarea id="notes" placeholder="Ex : sans chantilly, bien chaud, retrait à tel horaire, etc."></textarea>
 
             <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:15px" id="whatsappBtn">
               Envoyer la commande sur WhatsApp
             </button>
             <p class="note" style="margin-top:12px">
-              Astuce : si tu utilises PayPal ou Revolut, le message WhatsApp peut mentionner que le paiement a déjà été fait.
+              La commande sera envoyée avec le détail du panier, le total, le prénom, l’heure de retrait et le mode de paiement choisi.
             </p>
           </div>
         </div>
@@ -373,18 +383,14 @@
         <p><b>Téléphone :</b> 06 94 13 06 40<br><b>Snap :</b> cassougourmandi</p>
       </div>
       <div>
-        <h3>Infos</h3>
-        <p><b>Lieu :</b> Cité Lumière, Kourou<br><b>Horaires :</b> à partir de 15h</p>
+        <h3>Infos pratiques</h3>
+        <p><b>Lieu :</b> <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Cit%C3%A9%20Lumi%C3%A8re%2C%20Kourou%2C%20Guyane">Cité Lumière, Kourou</a><br><b>Horaires :</b> tous les jours à partir de 15h</p>
       </div>
     </div>
   </footer>
 
   <script>
     const WHATSAPP_NUMBER = "594694130640";
-
-    // IMPORTANT :
-    // Remplace les liens ci-dessous par les tiens.
-    // Tu peux laisser {amount} dans le lien si ton service l'accepte.
     const PAYMENT_LINKS = {
       paypal: "",
       revolut: ""
@@ -461,6 +467,11 @@
       activeCategory = cat;
       renderTabs();
       renderMenu();
+    }
+
+    function goToCategory(cat){
+      setCategory(cat);
+      document.getElementById("menu").scrollIntoView({ behavior:"smooth", block:"start" });
     }
 
     function getFilteredProducts(){
@@ -631,7 +642,7 @@
       }
       const text = buildSummaryText();
       navigator.clipboard.writeText(text)
-        .then(() => alert("Résumé copié dans le presse-papiers."))
+        .then(() => alert("Résumé copié."))
         .catch(() => alert("Impossible de copier automatiquement. Tu peux envoyer la commande sur WhatsApp directement."));
     }
 
@@ -660,7 +671,7 @@
       }
       const url = resolvePaymentUrl(method);
       if(!url){
-        alert(`Le lien ${method} n’a pas encore été configuré dans le fichier index.html.`);
+        alert(`${method} n’est pas encore disponible. Tu peux choisir un paiement sur place ou envoyer la commande sur WhatsApp.`);
         return;
       }
       window.open(url, "_blank");
@@ -670,11 +681,11 @@
       const method = document.getElementById("payment").value;
       const help = document.getElementById("paymentHelp");
       if(method === "PayPal"){
-        help.textContent = "Tu as choisi PayPal. Clique sur le bouton ci-dessous pour ouvrir le paiement si le lien a été configuré.";
+        help.textContent = "Tu as choisi PayPal. Ouvre le paiement, puis envoie ta commande sur WhatsApp.";
       } else if(method === "Revolut"){
-        help.textContent = "Tu as choisi Revolut. Clique sur le bouton ci-dessous pour ouvrir le paiement si le lien a été configuré.";
+        help.textContent = "Tu as choisi Revolut. Ouvre le paiement, puis envoie ta commande sur WhatsApp.";
       } else {
-        help.textContent = "Si tu choisis PayPal ou Revolut, tu peux ouvrir le lien de paiement avant d’envoyer la commande.";
+        help.textContent = "Pour un paiement sur place, envoie simplement la commande sur WhatsApp.";
       }
     }
 

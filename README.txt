@@ -1,49 +1,27 @@
-LES GOURMANDISES DE CASSOU — PACK V2
+LES GOURMANDISES DE CASSOU — PACK V3
 
-Contenu :
-- index.html : site mis à jour
-- hero-illustration.png : visuel principal
-- crepe-illustration.png : visuel crêpes
-- waffle-illustration.png : visuel gaufres
-- drinks-illustration.png : visuel boissons
+Modifications ajoutées :
+1. La date fixe a été remplacée par :
+   "Ouvert tous les jours · à partir de 15h"
 
-Améliorations ajoutées :
-1. Jus locaux séparés :
-   - jus local cerise
-   - jus local gingembre
-   - jus local moubin
+2. La localisation est cliquable :
+   Cité Lumière, Kourou ouvre Google Maps.
 
-2. Formules personnalisables :
-   - Formule crêpe + milk-shake : choix de la crêpe sucrée + choix du milk-shake
-   - Formule gaufre + milk-shake : choix de la gaufre + choix du milk-shake
+3. Les spécialités renvoient maintenant vers le menu concerné :
+   - Crêpes
+   - Gaufres
+   - Milk-shakes & jus locaux
 
-3. Visuels / illustrations ajoutés pour rendre le site plus vivant.
+4. Le mot "illustration" a été retiré des textes visibles.
 
-4. Paiement :
-   - sur place espèces
-   - sur place carte
-   - PayPal (à configurer)
-   - Revolut (à configurer)
+5. Les textes techniques destinés au propriétaire ont été remplacés par des phrases compréhensibles pour les clients.
 
-IMPORTANT POUR PAYPAL / REVOLUT :
-Ouvre le fichier index.html, cherche :
+Paiement PayPal / Revolut :
+Les boutons sont prêts mais les liens sont vides.
+Dans index.html, cherche :
 const PAYMENT_LINKS = {
   paypal: "",
   revolut: ""
 };
 
-Remplace par exemple par :
-const PAYMENT_LINKS = {
-  paypal: "https://paypal.me/TONCOMPTE/{amount}",
-  revolut: "https://revolut.me/TONPSEUDO/{amount}"
-};
-
-Le site remplacera automatiquement {amount} par le total de la commande si ton lien l'accepte.
-
-Mise en ligne :
-- Netlify (très simple)
-- Vercel
-- GitHub Pages
-- Hébergeur classique
-
-Si tu me donnes ton lien PayPal.me et ton lien Revolut.me, je peux te faire une V3 directement prête.
+Tu peux mettre tes vrais liens quand tu les as.
