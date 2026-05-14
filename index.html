@@ -5,286 +5,694 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Gourmandises de Cassou — Commande en ligne</title>
   <style>
-    :root {
-      --bg: #fff7ee;
-      --card: #ffffff;
-      --text: #24150f;
-      --muted: #7b6258;
-      --pink: #d72678;
-      --pink-dark: #a9165a;
-      --yellow: #f3bb2e;
-      --border: #f0d8c7;
-      --shadow: 0 18px 45px rgba(66, 35, 12, 0.12);
+    :root{
+      --bg:#fff7ef;
+      --card:#ffffff;
+      --text:#2b1a12;
+      --muted:#7a6458;
+      --pink:#d6287d;
+      --pink-dark:#ac1b62;
+      --gold:#f1ba3b;
+      --border:#f0dac8;
+      --shadow:0 18px 42px rgba(74,39,16,.12);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top left, #ffe4ec 0, transparent 36%), var(--bg);
-      color: var(--text);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,219,234,.9), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,236,210,.9), transparent 25%),
+        var(--bg);
     }
-    a { color: inherit; text-decoration: none; }
-    header {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(255, 247, 238, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,select,input,textarea{font:inherit}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(12px);
+      background:rgba(255,247,239,.9);
+      border-bottom:1px solid var(--border);
     }
-    .nav {
-      max-width: 1100px; margin: auto; padding: 14px 18px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    .nav{
+      max-width:1180px;margin:auto;padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
     }
-    .brand {
-      display: flex; flex-direction: column; line-height: 1.1;
-      font-weight: 900; letter-spacing: -0.03em;
+    .brand{display:flex;flex-direction:column;font-weight:900;letter-spacing:-.03em}
+    .brand span{font-size:1.2rem}
+    .brand small{color:var(--pink);font-weight:800;margin-top:2px}
+    .nav-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      border:0;border-radius:999px;padding:12px 18px;
+      font-weight:800;cursor:pointer;transition:.18s ease;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
     }
-    .brand small { color: var(--pink); font-weight: 800; letter-spacing: 0; margin-top: 3px; }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .btn {
-      border: 0; border-radius: 999px; padding: 12px 17px; font-weight: 800;
-      cursor: pointer; transition: 0.18s transform, 0.18s box-shadow, 0.18s background;
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--pink);color:#fff;box-shadow:0 12px 24px rgba(214,40,125,.22)}
+    .btn-primary:hover{background:var(--pink-dark)}
+    .btn-soft{background:#fff;border:1px solid var(--border);color:var(--pink)}
+    .btn-dark{background:#111;color:#fff}
+    .container{max-width:1180px;margin:auto;padding:0 18px}
+    .hero{
+      padding:40px 0 24px;
+      display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--pink); color: white; box-shadow: 0 10px 25px rgba(215,38,120,.25); }
-    .btn-primary:hover { background: var(--pink-dark); }
-    .btn-soft { background: #fff; color: var(--pink); border: 1px solid var(--border); }
-    .hero {
-      max-width: 1100px; margin: auto; padding: 54px 18px 28px;
-      display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 28px;
+    .hero-copy,.hero-visual{
+      background:linear-gradient(180deg,#fff 0%, #fff7ef 100%);
+      border:1px solid var(--border);border-radius:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
     }
-    .hero-card {
-      background: linear-gradient(135deg,#fff 0%,#fff2df 100%);
-      border: 1px solid var(--border); border-radius: 34px; padding: 34px; box-shadow: var(--shadow);
+    .hero-copy{padding:32px}
+    .tag{
+      display:inline-flex;background:#111;color:#fff;
+      padding:9px 14px;border-radius:999px;font-size:14px;font-weight:900;
+      margin-bottom:16px;
     }
-    .tag {
-      display: inline-flex; background: #111; color: white; padding: 9px 14px;
-      border-radius: 999px; font-size: 14px; font-weight: 900; margin-bottom: 18px;
+    h1{
+      margin:0;font-size:clamp(2.3rem,5vw,4.7rem);
+      letter-spacing:-.07em;line-height:.93;
     }
-    h1 { margin: 0; font-size: clamp(36px, 7vw, 72px); line-height: .93; letter-spacing: -.07em; }
-    .hero p { margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
-    .hero-highlight { display: grid; gap: 14px; }
-    .highlight-box { background: #111; color: white; border-radius: 28px; padding: 24px; box-shadow: var(--shadow); }
-    .highlight-box b { color: var(--yellow); font-size: 36px; }
-    .info-grid {
-      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin-top: 18px;
+    .lead{color:var(--muted);font-size:1.07rem;line-height:1.6;margin-top:16px}
+    .hero-info{
+      margin-top:20px;
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
     }
-    .info {
-      background: #fff; border: 1px solid var(--border); border-radius: 24px;
-      padding: 18px; color: var(--muted); font-weight: 700;
+    .info-chip{
+      background:#fff;border:1px solid var(--border);border-radius:20px;
+      padding:15px;font-weight:700;color:var(--muted)
     }
-    .section { max-width: 1100px; margin: auto; padding: 28px 18px; }
-    .section-title { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
-    h2 { margin: 0; font-size: 34px; letter-spacing: -.04em; }
-    .category-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 18px; }
-    .tab {
-      border: 1px solid var(--border); background: white; color: var(--text);
-      padding: 10px 15px; border-radius: 999px; font-weight: 800; cursor: pointer; white-space: nowrap;
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    .section{padding:18px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:16px}
+    .section-head h2{margin:0;font-size:2rem;letter-spacing:-.04em}
+    .section-head p{margin:6px 0 0;color:var(--muted)}
+    .specials{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
     }
-    .tab.active { background: var(--pink); color: white; border-color: var(--pink); }
-    .menu-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
-    .item {
-      background: var(--card); border: 1px solid var(--border); border-radius: 26px; padding: 18px;
-      box-shadow: 0 10px 25px rgba(66,35,12,.07);
-      display: flex; flex-direction: column; gap: 12px; min-height: 160px;
+    .special-card{
+      background:#fff;border:1px solid var(--border);border-radius:26px;
+      overflow:hidden;box-shadow:var(--shadow)
     }
-    .item-top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
-    .item h3 { margin: 0; font-size: 19px; line-height: 1.2; }
-    .price { color: var(--pink); font-weight: 900; font-size: 22px; white-space: nowrap; }
-    .item p { margin: 0; color: var(--muted); line-height: 1.45; flex: 1; }
-    .qty { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
-    .qty button {
-      width: 38px; height: 38px; border-radius: 50%; border: 0; background: #fff0f6;
-      color: var(--pink); font-size: 22px; font-weight: 900; cursor: pointer;
+    .special-card img{height:220px;width:100%;object-fit:cover}
+    .special-card .content{padding:16px}
+    .special-card h3{margin:0 0 8px}
+    .special-card p{margin:0;color:var(--muted);line-height:1.5}
+    .tabs{
+      display:flex;gap:10px;overflow:auto;padding-bottom:8px;margin-bottom:18px
     }
-    .qty span { min-width: 26px; text-align: center; font-weight: 900; }
-    .cart-layout { display: grid; grid-template-columns: 1fr 380px; gap: 18px; align-items: start; }
-    .cart-card, .form-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 28px; padding: 22px; box-shadow: var(--shadow);
+    .tab{
+      background:#fff;border:1px solid var(--border);border-radius:999px;
+      padding:10px 14px;font-weight:800;cursor:pointer;white-space:nowrap
     }
-    .cart-line {
-      display: flex; justify-content: space-between; gap: 12px; padding: 12px 0;
-      border-bottom: 1px dashed var(--border); color: var(--muted); font-weight: 700;
+    .tab.active{background:var(--pink);border-color:var(--pink);color:#fff}
+    .menu-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
     }
-    .cart-line:last-child { border-bottom: 0; }
-    .total {
-      display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px;
-      border-top: 2px solid var(--border); font-size: 24px; font-weight: 900;
+    .item{
+      background:var(--card);border:1px solid var(--border);border-radius:24px;
+      padding:18px;box-shadow:0 8px 24px rgba(74,39,16,.07);
+      display:flex;flex-direction:column;gap:12px;min-height:205px
     }
-    label { display: block; font-weight: 900; margin: 13px 0 7px; }
-    input, textarea, select {
-      width: 100%; border: 1px solid var(--border); border-radius: 16px; padding: 13px 14px;
-      font: inherit; background: #fffaf5; outline: none;
+    .item h3{margin:0;font-size:1.1rem;line-height:1.25}
+    .row-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
+    .price{color:var(--pink);font-size:1.35rem;font-weight:900;white-space:nowrap}
+    .item p{margin:0;color:var(--muted);line-height:1.5}
+    .badge{
+      display:inline-flex;background:#fff1f7;color:var(--pink);
+      border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;width:fit-content
     }
-    textarea { min-height: 90px; resize: vertical; }
-    .checkout-btn { width: 100%; margin-top: 16px; font-size: 16px; padding: 15px; }
-    .note { color: var(--muted); font-size: 14px; line-height: 1.45; margin-top: 12px; }
-    footer { margin-top: 36px; padding: 34px 18px; background: #111; color: white; }
-    footer .footer-inner { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
-    footer b { color: var(--yellow); }
-    footer p { color: #ddd; line-height: 1.5; }
-    .floating-cart { position: fixed; right: 18px; bottom: 18px; z-index: 40; display: none; }
-    @media (max-width: 850px) {
-      .hero, .cart-layout { grid-template-columns: 1fr; }
-      .menu-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      footer .footer-inner { grid-template-columns: 1fr; }
-      .nav-actions .btn-soft { display: none; }
-      .floating-cart { display: block; }
+    .controls{
+      display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto
     }
-    @media (max-width: 560px) {
-      .menu-grid { grid-template-columns: 1fr; }
-      .hero-card { padding: 24px; border-radius: 26px; }
-      .info-grid { grid-template-columns: 1fr; }
-      .section-title { align-items: start; flex-direction: column; }
-      h2 { font-size: 28px; }
+    .qty{
+      display:flex;align-items:center;gap:8px
+    }
+    .qty button{
+      width:36px;height:36px;border:0;border-radius:50%;
+      background:#fff0f6;color:var(--pink);font-weight:900;font-size:1.25rem;cursor:pointer
+    }
+    .qty span{min-width:22px;text-align:center;font-weight:900}
+    .option-group{display:grid;gap:10px}
+    .option-group label{font-weight:800;font-size:.95rem}
+    .option-group select{
+      width:100%;background:#fffaf5;border:1px solid var(--border);
+      border-radius:14px;padding:12px
+    }
+    .tiny{font-size:.9rem;color:var(--muted)}
+    .cart-layout{
+      display:grid;grid-template-columns:1fr 390px;gap:18px;align-items:start;
+    }
+    .card{
+      background:#fff;border:1px solid var(--border);border-radius:28px;
+      box-shadow:var(--shadow);padding:22px;
+    }
+    .cart-line{
+      display:grid;grid-template-columns:1fr auto;gap:12px;
+      padding:14px 0;border-bottom:1px dashed var(--border)
+    }
+    .cart-line:last-child{border-bottom:0}
+    .cart-line strong{display:block}
+    .cart-line small{display:block;color:var(--muted);margin-top:4px;line-height:1.45}
+    .line-actions{display:flex;align-items:center;gap:8px;margin-top:8px}
+    .line-actions button{
+      border:0;background:#fff1f7;color:var(--pink);padding:7px 10px;border-radius:999px;
+      font-weight:900;cursor:pointer
+    }
+    .empty{color:var(--muted)}
+    .total{
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:2px solid var(--border);margin-top:16px;padding-top:16px;
+      font-size:1.45rem;font-weight:900
+    }
+    form label{display:block;font-weight:900;margin:14px 0 7px}
+    input,textarea,select.form-control{
+      width:100%;background:#fffaf5;border:1px solid var(--border);
+      border-radius:16px;padding:13px 14px;outline:none
+    }
+    textarea{min-height:90px;resize:vertical}
+    .pay-box{
+      margin-top:12px;padding:14px;border-radius:18px;background:#fff8ed;border:1px dashed var(--border)
+    }
+    .pay-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .note{color:var(--muted);font-size:.93rem;line-height:1.55}
+    footer{
+      margin-top:26px;background:#111;color:#fff;padding:34px 0
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px
+    }
+    footer h3{margin-top:0}
+    footer p{color:#ddd;line-height:1.6}
+    footer b{color:var(--gold)}
+    .floating{
+      position:fixed;right:18px;bottom:18px;z-index:60;display:none
+    }
+    @media (max-width:950px){
+      .hero,.cart-layout,.footer-grid{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .specials{grid-template-columns:1fr}
+      .floating{display:inline-flex}
+    }
+    @media (max-width:620px){
+      .menu-grid{grid-template-columns:1fr}
+      .hero-copy{padding:24px}
+      .hero-info{grid-template-columns:1fr}
+      .nav{align-items:start;flex-direction:column}
+      .section-head{flex-direction:column;align-items:start}
     }
   </style>
 </head>
 <body>
   <header>
-    <nav class="nav">
-      <a class="brand" href="#top">Les Gourmandises de Cassou<small>Commande rapide</small></a>
+    <div class="nav">
+      <a class="brand" href="#top">
+        <span>Les Gourmandises de Cassou</span>
+        <small>Commande en ligne</small>
+      </a>
       <div class="nav-actions">
         <a class="btn btn-soft" href="#menu">Voir le menu</a>
         <a class="btn btn-primary" href="#commande">Commander</a>
       </div>
-    </nav>
+    </div>
   </header>
+
   <main id="top">
-    <section class="hero">
-      <div class="hero-card">
-        <span class="tag">Mercredi 13 mai 2026 · à partir de 15h</span>
-        <h1>Crêpes, gaufres & milk-shakes</h1>
-        <p>Choisis tes gourmandises, indique ton heure de retrait, puis envoie ta commande directement sur WhatsApp.</p>
-        <div class="info-grid">
-          <div class="info">📍 Cité Lumière, Kourou</div>
-          <div class="info">💳 Paiement carte ou espèces</div>
-          <div class="info">📞 06 94 13 06 40</div>
-          <div class="info">🥤 Jus local disponible</div>
+    <div class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="tag">Mercredi 13 mai 2026 · à partir de 15h</span>
+          <h1>Crêpes, gaufres, milk-shakes & jus locaux</h1>
+          <p class="lead">
+            Choisis tes produits, personnalise tes formules, puis envoie ta commande directement sur WhatsApp.
+            Paiement possible sur place, et l’option PayPal / Revolut peut être activée.
+          </p>
+          <div class="hero-info">
+            <div class="info-chip">📍 Cité Lumière, Kourou</div>
+            <div class="info-chip">📞 06 94 13 06 40</div>
+            <div class="info-chip">💳 Carte, espèces, PayPal ou Revolut</div>
+            <div class="info-chip">⏰ Retrait à partir de 15h</div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#commande">Je commande</a>
+            <a class="btn btn-soft" href="#specialites">Voir les spécialités</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-highlight">
-        <div class="highlight-box"><div>Formule crêpe + milkshake</div><b>6€</b></div>
-        <div class="highlight-box"><div>Formule gaufre + milkshake</div><b>8€</b></div>
-      </div>
-    </section>
-    <section class="section" id="menu">
-      <div class="section-title">
-        <div><h2>Menu</h2><p class="note">Ajoute les produits au panier, puis valide ta commande.</p></div>
-      </div>
-      <div class="category-tabs" id="tabs"></div>
-      <div class="menu-grid" id="menuGrid"></div>
-    </section>
-    <section class="section" id="commande">
-      <div class="section-title">
-        <div><h2>Commande</h2><p class="note">La commande sera envoyée sur WhatsApp. Paiement sur place.</p></div>
-      </div>
-      <div class="cart-layout">
-        <div class="cart-card">
-          <h2>Ton panier</h2>
-          <div id="cartLines"></div>
-          <div class="total"><span>Total</span><span id="totalPrice">0€</span></div>
-          <button class="btn btn-soft checkout-btn" id="clearCart">Vider le panier</button>
+        <div class="hero-visual">
+          <img src="hero-illustration.png" alt="Illustration gourmande crêpes, gaufres et milk-shakes">
         </div>
-        <div class="form-card">
-          <h2>Infos retrait</h2>
-          <label for="name">Prénom</label><input id="name" placeholder="Ex : Lerisno" />
-          <label for="pickup">Heure de retrait souhaitée</label><input id="pickup" placeholder="Ex : 16h30" />
-          <label for="payment">Paiement</label>
-          <select id="payment"><option>Sur place — espèces</option><option>Sur place — carte</option></select>
-          <label for="notes">Remarque</label><textarea id="notes" placeholder="Ex : sans chantilly, bien chaud, etc."></textarea>
-          <button class="btn btn-primary checkout-btn" id="whatsappBtn">Envoyer la commande sur WhatsApp</button>
-          <p class="note">Après le clic, WhatsApp s’ouvre avec le message de commande prêt à envoyer.</p>
+      </section>
+
+      <section class="section" id="specialites">
+        <div class="section-head">
+          <div>
+            <h2>Illustrations & spécialités</h2>
+            <p>J’ai ajouté des visuels pour rendre le site plus vivant et plus pro.</p>
+          </div>
         </div>
-      </div>
-    </section>
+        <div class="specials">
+          <article class="special-card">
+            <img src="crepe-illustration.png" alt="Illustration crêpe">
+            <div class="content">
+              <h3>Crêpes</h3>
+              <p>Sucrées ou salées, avec plusieurs choix selon l’envie.</p>
+            </div>
+          </article>
+          <article class="special-card">
+            <img src="waffle-illustration.png" alt="Illustration gaufre">
+            <div class="content">
+              <h3>Gaufres</h3>
+              <p>Avec Nutella, miel, sucre, ou version glace pour les plus gourmands.</p>
+            </div>
+          </article>
+          <article class="special-card">
+            <img src="drinks-illustration.png" alt="Illustration boissons">
+            <div class="content">
+              <h3>Milk-shakes & jus</h3>
+              <p>Milk-shakes variés et jus locaux désormais séparés par parfum.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="section-head">
+          <div>
+            <h2>Menu</h2>
+            <p>Les jus sont séparés, et les formules sont maintenant personnalisables.</p>
+          </div>
+        </div>
+        <div class="tabs" id="tabs"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+
+      <section class="section" id="commande">
+        <div class="section-head">
+          <div>
+            <h2>Commande</h2>
+            <p>Une fois ton panier prêt, tu peux payer puis envoyer le résumé sur WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="cart-layout">
+          <div class="card">
+            <h2>Ton panier</h2>
+            <div id="cartLines"></div>
+            <div class="total">
+              <span>Total</span>
+              <span id="totalPrice">0€</span>
+            </div>
+            <div class="pay-box">
+              <strong>Paiement en ligne</strong>
+              <p class="note">
+                Les boutons PayPal et Revolut sont prêts. Il suffit de remplacer les liens dans le fichier
+                <b>index.html</b> avec ton vrai lien <b>paypal.me</b> et ton vrai lien <b>revolut.me</b>.
+              </p>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-soft" id="clearCart">Vider le panier</button>
+              <button class="btn btn-dark" id="copySummary">Copier le résumé</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Infos client</h2>
+            <label for="name">Prénom</label>
+            <input id="name" placeholder="Ex : Lerisno">
+
+            <label for="pickup">Heure de retrait souhaitée</label>
+            <input id="pickup" placeholder="Ex : 16h30">
+
+            <label for="payment">Mode de paiement</label>
+            <select id="payment" class="form-control">
+              <option>Sur place — espèces</option>
+              <option>Sur place — carte</option>
+              <option>PayPal</option>
+              <option>Revolut</option>
+            </select>
+
+            <div class="pay-box" id="onlinePayBox">
+              <strong>Paiement sélectionné</strong>
+              <p class="note" id="paymentHelp">
+                Si tu choisis PayPal ou Revolut, tu peux ouvrir le lien de paiement avant d’envoyer la commande.
+              </p>
+              <div class="pay-buttons">
+                <button class="btn btn-soft" id="paypalBtn" type="button">Payer avec PayPal</button>
+                <button class="btn btn-soft" id="revolutBtn" type="button">Payer avec Revolut</button>
+              </div>
+            </div>
+
+            <label for="notes">Remarque</label>
+            <textarea id="notes" placeholder="Ex : sans chantilly, bien chaud, etc."></textarea>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:15px" id="whatsappBtn">
+              Envoyer la commande sur WhatsApp
+            </button>
+            <p class="note" style="margin-top:12px">
+              Astuce : si tu utilises PayPal ou Revolut, le message WhatsApp peut mentionner que le paiement a déjà été fait.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
-  <a class="btn btn-primary floating-cart" href="#commande" id="floatingCart">Panier · 0€</a>
+
+  <a class="btn btn-primary floating" id="floatingCart" href="#commande">Panier · 0€</a>
+
   <footer>
-    <div class="footer-inner">
-      <div><h3>Les Gourmandises de Cassou</h3><p>Crêpes, gaufres, milk-shakes et jus local à Kourou.</p></div>
-      <div><h3>Contact</h3><p><b>Téléphone :</b> 06 94 13 06 40<br><b>Snap :</b> cassougourmandi</p></div>
-      <div><h3>Infos</h3><p><b>Lieu :</b> Cité Lumière, Kourou<br><b>Horaires :</b> à partir de 15h</p></div>
+    <div class="container footer-grid">
+      <div>
+        <h3>Les Gourmandises de Cassou</h3>
+        <p>Crêpes, gaufres, milk-shakes et jus locaux à Kourou.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><b>Téléphone :</b> 06 94 13 06 40<br><b>Snap :</b> cassougourmandi</p>
+      </div>
+      <div>
+        <h3>Infos</h3>
+        <p><b>Lieu :</b> Cité Lumière, Kourou<br><b>Horaires :</b> à partir de 15h</p>
+      </div>
     </div>
   </footer>
+
   <script>
     const WHATSAPP_NUMBER = "594694130640";
+
+    // IMPORTANT :
+    // Remplace les liens ci-dessous par les tiens.
+    // Tu peux laisser {amount} dans le lien si ton service l'accepte.
+    const PAYMENT_LINKS = {
+      paypal: "",
+      revolut: ""
+    };
+
     const products = [
-      { category: "Crêpes", name: "Crêpe steak jambon fromage", price: 6, desc: "Crêpe salée complète et gourmande." },
-      { category: "Crêpes", name: "Crêpe jambon fromage", price: 4, desc: "Classique, simple et efficace." },
-      { category: "Crêpes", name: "Crêpe steak fromage", price: 5, desc: "Crêpe salée avec steak et fromage." },
-      { category: "Crêpes", name: "Crêpe Nutella", price: 3.5, desc: "Crêpe sucrée au Nutella." },
-      { category: "Crêpes", name: "Crêpe au miel", price: 3, desc: "Crêpe sucrée au miel." },
-      { category: "Crêpes", name: "Crêpe sucre", price: 2.5, desc: "Crêpe sucrée simple." },
-      { category: "Gaufres", name: "Gaufre Nutella", price: 5, desc: "Gaufre généreuse au Nutella." },
-      { category: "Gaufres", name: "Gaufre miel", price: 5, desc: "Gaufre sucrée au miel." },
-      { category: "Gaufres", name: "Gaufre sucre", price: 5, desc: "Gaufre sucrée simple." },
-      { category: "Gaufres", name: "Gaufre + boule de glace", price: 7, desc: "Gaufre avec boule de glace au choix." },
-      { category: "Milk-shakes", name: "Milk-shake fraise", price: 5, desc: "Milk-shake frais et gourmand." },
-      { category: "Milk-shakes", name: "Milk-shake Nutella", price: 5, desc: "Milk-shake au Nutella." },
-      { category: "Milk-shakes", name: "Milk-shake Oreo", price: 5, desc: "Milk-shake aux biscuits Oreo." },
-      { category: "Milk-shakes", name: "Milk-shake vanille", price: 5, desc: "Milk-shake classique à la vanille." },
-      { category: "Milk-shakes", name: "Milk-shake Spéculoos", price: 5, desc: "Milk-shake au goût spéculoos." },
-      { category: "Milk-shakes", name: "Milk-shake M&M’s", price: 5, desc: "Milk-shake gourmand aux M&M’s." },
-      { category: "Jus local", name: "Jus local — petite bouteille", price: 2.5, desc: "Parfum cerise, gingembre, mobin." },
-      { category: "Formules", name: "Formule crêpe + milkshake", price: 6, desc: "1 crêpe sucrée + 1 milk-shake." },
-      { category: "Formules", name: "Formule gaufre + milkshake", price: 8, desc: "1 gaufre + 1 milk-shake." }
+      { id:"crepe-steak-jambon-fromage", category:"Crêpes", type:"simple", name:"Crêpe steak jambon fromage", price:6, desc:"Crêpe salée complète et gourmande.", badge:"Salée" },
+      { id:"crepe-jambon-fromage", category:"Crêpes", type:"simple", name:"Crêpe jambon fromage", price:4, desc:"Classique, simple et efficace.", badge:"Salée" },
+      { id:"crepe-steak-fromage", category:"Crêpes", type:"simple", name:"Crêpe steak fromage", price:5, desc:"Crêpe salée avec steak et fromage.", badge:"Salée" },
+      { id:"crepe-nutella", category:"Crêpes", type:"simple", name:"Crêpe Nutella", price:3.5, desc:"Crêpe sucrée au Nutella.", badge:"Sucrée" },
+      { id:"crepe-miel", category:"Crêpes", type:"simple", name:"Crêpe au miel", price:3, desc:"Crêpe sucrée au miel.", badge:"Sucrée" },
+      { id:"crepe-sucre", category:"Crêpes", type:"simple", name:"Crêpe sucre", price:2.5, desc:"Crêpe sucrée simple.", badge:"Sucrée" },
+
+      { id:"gaufre-nutella", category:"Gaufres", type:"simple", name:"Gaufre Nutella", price:5, desc:"Gaufre généreuse au Nutella.", badge:"Gourmande" },
+      { id:"gaufre-miel", category:"Gaufres", type:"simple", name:"Gaufre miel", price:5, desc:"Gaufre sucrée au miel.", badge:"Sucrée" },
+      { id:"gaufre-sucre", category:"Gaufres", type:"simple", name:"Gaufre sucre", price:5, desc:"Gaufre sucrée simple.", badge:"Sucrée" },
+      { id:"gaufre-glace", category:"Gaufres", type:"simple", name:"Gaufre + boule de glace", price:7, desc:"Gaufre avec boule de glace au choix.", badge:"Dessert" },
+
+      { id:"milk-fraise", category:"Milk-shakes", type:"simple", name:"Milk-shake fraise", price:5, desc:"Milk-shake frais et fruité.", badge:"Milk-shake" },
+      { id:"milk-nutella", category:"Milk-shakes", type:"simple", name:"Milk-shake Nutella", price:5, desc:"Milk-shake gourmand au Nutella.", badge:"Milk-shake" },
+      { id:"milk-oreo", category:"Milk-shakes", type:"simple", name:"Milk-shake Oreo", price:5, desc:"Milk-shake aux biscuits Oreo.", badge:"Milk-shake" },
+      { id:"milk-vanille", category:"Milk-shakes", type:"simple", name:"Milk-shake vanille", price:5, desc:"Milk-shake classique à la vanille.", badge:"Milk-shake" },
+      { id:"milk-speculoos", category:"Milk-shakes", type:"simple", name:"Milk-shake Spéculoos", price:5, desc:"Milk-shake au goût spéculoos.", badge:"Milk-shake" },
+      { id:"milk-mms", category:"Milk-shakes", type:"simple", name:"Milk-shake M&M’s", price:5, desc:"Milk-shake gourmand aux M&M’s.", badge:"Milk-shake" },
+
+      { id:"jus-cerise", category:"Jus locaux", type:"simple", name:"Jus local cerise", price:2.5, desc:"Petite bouteille.", badge:"Jus local" },
+      { id:"jus-gingembre", category:"Jus locaux", type:"simple", name:"Jus local gingembre", price:2.5, desc:"Petite bouteille.", badge:"Jus local" },
+      { id:"jus-moubin", category:"Jus locaux", type:"simple", name:"Jus local moubin", price:2.5, desc:"Petite bouteille.", badge:"Jus local" },
+
+      {
+        id:"formule-crepe",
+        category:"Formules",
+        type:"combo",
+        name:"Formule crêpe + milk-shake",
+        price:6,
+        desc:"Choisis ta crêpe sucrée et ton milk-shake.",
+        choice1Label:"Choix de la crêpe",
+        choice2Label:"Choix du milk-shake",
+        choices1:["Crêpe Nutella","Crêpe au miel","Crêpe sucre"],
+        choices2:["Milk-shake fraise","Milk-shake Nutella","Milk-shake Oreo","Milk-shake vanille","Milk-shake Spéculoos","Milk-shake M&M’s"]
+      },
+      {
+        id:"formule-gaufre",
+        category:"Formules",
+        type:"combo",
+        name:"Formule gaufre + milk-shake",
+        price:8,
+        desc:"Choisis ta gaufre et ton milk-shake.",
+        choice1Label:"Choix de la gaufre",
+        choice2Label:"Choix du milk-shake",
+        choices1:["Gaufre Nutella","Gaufre miel","Gaufre sucre"],
+        choices2:["Milk-shake fraise","Milk-shake Nutella","Milk-shake Oreo","Milk-shake vanille","Milk-shake Spéculoos","Milk-shake M&M’s"]
+      }
     ];
+
     const categories = ["Tout", ...new Set(products.map(p => p.category))];
     const cart = {};
     let activeCategory = "Tout";
-    function formatPrice(value) {
-      return value.toLocaleString("fr-FR", { minimumFractionDigits: value % 1 ? 2 : 0, maximumFractionDigits: 2 }) + "€";
+
+    function formatPrice(value){
+      return value.toLocaleString("fr-FR", {
+        minimumFractionDigits: value % 1 ? 2 : 0,
+        maximumFractionDigits: 2
+      }) + "€";
     }
-    function renderTabs() {
-      document.getElementById("tabs").innerHTML = categories.map(category => `<button class="tab ${category === activeCategory ? "active" : ""}" onclick="setCategory('${category}')">${category}</button>`).join("");
+
+    function renderTabs(){
+      document.getElementById("tabs").innerHTML = categories.map(cat => `
+        <button class="tab ${cat === activeCategory ? "active" : ""}" onclick="setCategory('${cat}')">${cat}</button>
+      `).join("");
     }
-    function setCategory(category) { activeCategory = category; renderTabs(); renderMenu(); }
-    function safeName(name) { return name.replace(/'/g, "\\'"); }
-    function renderMenu() {
-      const filtered = activeCategory === "Tout" ? products : products.filter(p => p.category === activeCategory);
-      document.getElementById("menuGrid").innerHTML = filtered.map((p) => {
-        const qty = cart[p.name]?.qty || 0;
-        return `<article class="item"><div class="item-top"><h3>${p.name}</h3><div class="price">${formatPrice(p.price)}</div></div><p>${p.desc}</p><div class="qty"><button aria-label="Retirer" onclick="changeQty('${safeName(p.name)}', -1)">−</button><span>${qty}</span><button aria-label="Ajouter" onclick="changeQty('${safeName(p.name)}', 1)">+</button></div></article>`;
-      }).join("");
+
+    function setCategory(cat){
+      activeCategory = cat;
+      renderTabs();
+      renderMenu();
     }
-    function changeQty(name, delta) {
-      const product = products.find(p => p.name === name);
-      if (!product) return;
-      if (!cart[name]) cart[name] = { ...product, qty: 0 };
-      cart[name].qty += delta;
-      if (cart[name].qty <= 0) delete cart[name];
-      renderMenu(); renderCart();
+
+    function getFilteredProducts(){
+      return activeCategory === "Tout" ? products : products.filter(p => p.category === activeCategory);
     }
-    function getCartItems() { return Object.values(cart).filter(item => item.qty > 0); }
-    function getTotal() { return getCartItems().reduce((sum, item) => sum + item.price * item.qty, 0); }
-    function renderCart() {
+
+    function renderSimpleProduct(p){
+      const qty = cart[p.id]?.qty || 0;
+      return `
+        <article class="item">
+          <div class="row-top">
+            <h3>${p.name}</h3>
+            <div class="price">${formatPrice(p.price)}</div>
+          </div>
+          <span class="badge">${p.badge}</span>
+          <p>${p.desc}</p>
+          <div class="controls">
+            <div class="qty">
+              <button onclick="changeSimpleQty('${p.id}', -1)" aria-label="Retirer">−</button>
+              <span>${qty}</span>
+              <button onclick="changeSimpleQty('${p.id}', 1)" aria-label="Ajouter">+</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderComboProduct(p){
+      return `
+        <article class="item">
+          <div class="row-top">
+            <h3>${p.name}</h3>
+            <div class="price">${formatPrice(p.price)}</div>
+          </div>
+          <span class="badge">Formule</span>
+          <p>${p.desc}</p>
+          <div class="option-group">
+            <div>
+              <label for="${p.id}-choice1">${p.choice1Label}</label>
+              <select id="${p.id}-choice1">
+                ${p.choices1.map(choice => `<option>${choice}</option>`).join("")}
+              </select>
+            </div>
+            <div>
+              <label for="${p.id}-choice2">${p.choice2Label}</label>
+              <select id="${p.id}-choice2">
+                ${p.choices2.map(choice => `<option>${choice}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+          <div class="controls">
+            <span class="tiny">Ajoute la formule avec tes choix</span>
+            <button class="btn btn-soft" onclick="addCombo('${p.id}')">Ajouter</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderMenu(){
+      const filtered = getFilteredProducts();
+      document.getElementById("menuGrid").innerHTML = filtered.map(p =>
+        p.type === "simple" ? renderSimpleProduct(p) : renderComboProduct(p)
+      ).join("");
+    }
+
+    function changeSimpleQty(id, delta){
+      const product = products.find(p => p.id === id);
+      if(!product) return;
+      if(!cart[id]){
+        cart[id] = {
+          key:id, id:product.id, name:product.name, price:product.price, qty:0, details:""
+        };
+      }
+      cart[id].qty += delta;
+      if(cart[id].qty <= 0) delete cart[id];
+      renderMenu();
+      renderCart();
+    }
+
+    function addCombo(id){
+      const combo = products.find(p => p.id === id && p.type === "combo");
+      if(!combo) return;
+      const choice1 = document.getElementById(`${combo.id}-choice1`).value;
+      const choice2 = document.getElementById(`${combo.id}-choice2`).value;
+      const key = `${combo.id}|${choice1}|${choice2}`;
+      if(!cart[key]){
+        cart[key] = {
+          key,
+          id:combo.id,
+          name:combo.name,
+          price:combo.price,
+          qty:0,
+          details:`${choice1} + ${choice2}`
+        };
+      }
+      cart[key].qty += 1;
+      renderCart();
+    }
+
+    function updateCartLine(key, delta){
+      if(!cart[key]) return;
+      cart[key].qty += delta;
+      if(cart[key].qty <= 0) delete cart[key];
+      renderMenu();
+      renderCart();
+    }
+
+    function removeCartLine(key){
+      if(cart[key]) delete cart[key];
+      renderMenu();
+      renderCart();
+    }
+
+    function getCartItems(){
+      return Object.values(cart).filter(item => item.qty > 0);
+    }
+
+    function getTotal(){
+      return getCartItems().reduce((sum, item) => sum + (item.price * item.qty), 0);
+    }
+
+    function renderCart(){
       const items = getCartItems();
-      document.getElementById("cartLines").innerHTML = !items.length ? `<p class="note">Ton panier est vide pour l’instant.</p>` : items.map(item => `<div class="cart-line"><span>${item.qty} × ${item.name}</span><strong>${formatPrice(item.qty * item.price)}</strong></div>`).join("");
+      const lines = document.getElementById("cartLines");
+      if(!items.length){
+        lines.innerHTML = `<p class="empty">Ton panier est vide pour l’instant.</p>`;
+      } else {
+        lines.innerHTML = items.map(item => `
+          <div class="cart-line">
+            <div>
+              <strong>${item.qty} × ${item.name}</strong>
+              ${item.details ? `<small>${item.details}</small>` : ``}
+              <div class="line-actions">
+                <button onclick="updateCartLine('${item.key}', -1)">−1</button>
+                <button onclick="updateCartLine('${item.key}', 1)">+1</button>
+                <button onclick="removeCartLine('${item.key}')">Supprimer</button>
+              </div>
+            </div>
+            <div><strong>${formatPrice(item.qty * item.price)}</strong></div>
+          </div>
+        `).join("");
+      }
       document.getElementById("totalPrice").textContent = formatPrice(getTotal());
       document.getElementById("floatingCart").textContent = `Panier · ${formatPrice(getTotal())}`;
     }
-    function buildWhatsAppMessage() {
-      const name = document.getElementById("name").value.trim();
-      const pickup = document.getElementById("pickup").value.trim();
-      const payment = document.getElementById("payment").value;
-      const notes = document.getElementById("notes").value.trim();
+
+    function buildSummaryText(){
+      const items = getCartItems();
       let message = "Bonjour, je souhaite commander :\n\n";
-      getCartItems().forEach(item => { message += `- ${item.qty} x ${item.name} — ${formatPrice(item.qty * item.price)}\n`; });
-      message += `\nTotal : ${formatPrice(getTotal())}\nPrénom : ${name || "à préciser"}\nHeure de retrait : ${pickup || "à préciser"}\nPaiement : ${payment}\n`;
-      if (notes) message += `Remarque : ${notes}\n`;
+      items.forEach(item => {
+        message += `- ${item.qty} x ${item.name}`;
+        if(item.details) message += ` (${item.details})`;
+        message += ` — ${formatPrice(item.qty * item.price)}\n`;
+      });
+      message += `\nTotal : ${formatPrice(getTotal())}\n`;
+      message += `Prénom : ${document.getElementById("name").value.trim() || "à préciser"}\n`;
+      message += `Heure de retrait : ${document.getElementById("pickup").value.trim() || "à préciser"}\n`;
+      message += `Paiement : ${document.getElementById("payment").value}\n`;
+      const notes = document.getElementById("notes").value.trim();
+      if(notes) message += `Remarque : ${notes}\n`;
       return message;
     }
-    document.getElementById("whatsappBtn").addEventListener("click", () => {
-      if (!getCartItems().length) { alert("Ajoute au moins un produit au panier avant de commander."); return; }
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage())}`;
+
+    function copySummary(){
+      if(!getCartItems().length){
+        alert("Ajoute au moins un produit avant de copier le résumé.");
+        return;
+      }
+      const text = buildSummaryText();
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Résumé copié dans le presse-papiers."))
+        .catch(() => alert("Impossible de copier automatiquement. Tu peux envoyer la commande sur WhatsApp directement."));
+    }
+
+    function sendWhatsApp(){
+      if(!getCartItems().length){
+        alert("Ajoute au moins un produit au panier avant d’envoyer la commande.");
+        return;
+      }
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildSummaryText())}`;
       window.open(url, "_blank");
-    });
+    }
+
+    function resolvePaymentUrl(method){
+      const total = getTotal().toFixed(2);
+      let raw = "";
+      if(method === "PayPal") raw = PAYMENT_LINKS.paypal;
+      if(method === "Revolut") raw = PAYMENT_LINKS.revolut;
+      if(!raw) return "";
+      return raw.includes("{amount}") ? raw.replaceAll("{amount}", total) : raw;
+    }
+
+    function openPayment(method){
+      if(!getCartItems().length){
+        alert("Ajoute d’abord des produits au panier pour avoir le montant total.");
+        return;
+      }
+      const url = resolvePaymentUrl(method);
+      if(!url){
+        alert(`Le lien ${method} n’a pas encore été configuré dans le fichier index.html.`);
+        return;
+      }
+      window.open(url, "_blank");
+    }
+
+    function updatePaymentHelp(){
+      const method = document.getElementById("payment").value;
+      const help = document.getElementById("paymentHelp");
+      if(method === "PayPal"){
+        help.textContent = "Tu as choisi PayPal. Clique sur le bouton ci-dessous pour ouvrir le paiement si le lien a été configuré.";
+      } else if(method === "Revolut"){
+        help.textContent = "Tu as choisi Revolut. Clique sur le bouton ci-dessous pour ouvrir le paiement si le lien a été configuré.";
+      } else {
+        help.textContent = "Si tu choisis PayPal ou Revolut, tu peux ouvrir le lien de paiement avant d’envoyer la commande.";
+      }
+    }
+
+    document.getElementById("whatsappBtn").addEventListener("click", sendWhatsApp);
     document.getElementById("clearCart").addEventListener("click", () => {
       Object.keys(cart).forEach(key => delete cart[key]);
-      renderMenu(); renderCart();
+      renderMenu();
+      renderCart();
     });
-    renderTabs(); renderMenu(); renderCart();
+    document.getElementById("copySummary").addEventListener("click", copySummary);
+    document.getElementById("paypalBtn").addEventListener("click", () => openPayment("PayPal"));
+    document.getElementById("revolutBtn").addEventListener("click", () => openPayment("Revolut"));
+    document.getElementById("payment").addEventListener("change", updatePaymentHelp);
+
+    renderTabs();
+    renderMenu();
+    renderCart();
+    updatePaymentHelp();
   </script>
 </body>
 </html>
