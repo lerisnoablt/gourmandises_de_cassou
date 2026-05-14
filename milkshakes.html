@@ -7,19 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="nav">
-    <a class="brand" href="index.html">
-      <span>Les Gourmandises de Cassou</span>
-      <small>Commande en ligne</small>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">🥞</div>
+      <div class="logo-text">
+        <strong>Les Gourmandises de Cassou</strong>
+        <span data-opening>Ouvert tous les jours · à partir de 15h</span>
+      </div>
     </a>
-    <div class="nav-actions">
-      <a href="crepes.html">Crêpes</a>
-      <a href="gaufres.html">Gaufres</a>
-      <a href="milkshakes.html">Milk-shakes</a>
-      <a href="jus.html">Jus locaux</a>
-      <a href="formules.html">Formules</a>
-      <a href="paiement.html">Panier</a>
+    <div class="header-actions">
+      <a class="btn btn-soft" href="index.html">Accueil</a>
+      <a class="btn btn-primary" href="paiement.html" data-cart-total>Panier · 0€</a>
     </div>
   </div>
 </header>
@@ -29,22 +28,25 @@
       <div class="hero-copy">
         <span class="tag" data-opening>Ouvert tous les jours · à partir de 15h</span>
         <h1>Milk-shakes</h1>
-        <p class="lead">Choisis ton parfum de milk-shake et ajoute-le au panier.</p>
+        <p class="lead">Choisis ton parfum de milk-shake.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="paiement.html">Voir mon panier</a>
-          <a class="btn btn-soft" href="index.html">Retour à l’accueil</a>
+          <a class="btn btn-soft" href="index.html#categories">Changer de catégorie</a>
         </div>
       </div>
-      <div class="hero-visual"><img src="boissons.png" alt="Milk-shakes"></div>
+      <div class="hero-visual">
+        <img src="boissons.png" alt="Milk-shakes">
+      </div>
     </section>
+
     <section class="section">
       <div class="section-head">
         <div>
           <h2>Menu</h2>
-          <p>Ajoute les produits souhaités au panier.</p>
+          <p>Ajoute les produits souhaités au panier avec les boutons + et −.</p>
         </div>
       </div>
-      <div class="menu-grid" id="menuGrid" data-category="Milk-shakes"></div>
+      <div class="menu-grid" id="menuGrid" data-category-id="milkshakes"></div>
     </section>
   </div>
 </main>
@@ -64,7 +66,7 @@
     </div>
   </div>
 </footer>
-<a class="btn btn-primary floating" id="floatingCart" href="paiement.html">Panier · 0€</a>
+<a class="btn btn-primary floating" href="paiement.html" data-cart-total>Panier · 0€</a>
 <script src="config.js"></script>
 <script src="app.js"></script>
 </body>

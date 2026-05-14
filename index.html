@@ -7,19 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="nav">
-    <a class="brand" href="index.html">
-      <span>Les Gourmandises de Cassou</span>
-      <small>Commande en ligne</small>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">🥞</div>
+      <div class="logo-text">
+        <strong>Les Gourmandises de Cassou</strong>
+        <span data-opening>Ouvert tous les jours · à partir de 15h</span>
+      </div>
     </a>
-    <div class="nav-actions">
-      <a href="crepes.html">Crêpes</a>
-      <a href="gaufres.html">Gaufres</a>
-      <a href="milkshakes.html">Milk-shakes</a>
-      <a href="jus.html">Jus locaux</a>
-      <a href="formules.html">Formules</a>
-      <a href="paiement.html">Panier</a>
+    <div class="header-actions">
+      <a class="btn btn-soft" href="index.html">Accueil</a>
+      <a class="btn btn-primary" href="paiement.html" data-cart-total>Panier · 0€</a>
     </div>
   </div>
 </header>
@@ -28,22 +27,22 @@
     <section class="hero">
       <div class="hero-copy">
         <span class="tag" data-opening>Ouvert tous les jours · à partir de 15h</span>
-        <h1>Crêpes, gaufres, milk-shakes & jus locaux</h1>
+        <h1>Des gourmandises préparées avec amour</h1>
         <p class="lead">
-          Choisis tes produits, personnalise tes formules, puis envoie ta commande directement sur WhatsApp.
-          Paiement possible sur place, par carte, espèces, PayPal ou Revolut.
+          Crêpes, gaufres, milk-shakes et jus locaux. Choisis une catégorie, ajoute tes produits au panier,
+          puis envoie ta commande sur WhatsApp.
         </p>
         <div class="hero-info">
           <a class="info-chip map-link" data-map-link target="_blank" rel="noopener" href="#">
             📍 <span data-location>Cité Lumière, Kourou</span> — ouvrir la carte
           </a>
           <div class="info-chip">📞 06 94 13 06 40</div>
-          <div class="info-chip">💳 Carte, espèces, PayPal ou Revolut</div>
+          <div class="info-chip">💳 Espèces, carte, PayPal ou Revolut</div>
           <div class="info-chip">⏰ Commandes à partir de 15h</div>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="paiement.html">Voir mon panier</a>
-          <a class="btn btn-soft" href="#specialites">Voir les spécialités</a>
+          <a class="btn btn-primary" href="#categories">Choisir une catégorie</a>
+          <a class="btn btn-soft" href="paiement.html">Voir mon panier</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -51,43 +50,47 @@
       </div>
     </section>
 
-    <section class="section" id="specialites">
+    <section class="section" id="categories">
       <div class="section-head">
         <div>
-          <h2>Nos spécialités</h2>
-          <p>Choisis une catégorie pour ouvrir directement le bon menu.</p>
+          <h2>Que veux-tu commander ?</h2>
+          <p>Chaque bouton ouvre le bon menu.</p>
         </div>
       </div>
-      <div class="specials">
-        <article class="special-card">
+
+      <div class="category-grid">
+        <article class="category-card">
           <img src="crepes.png" alt="Crêpes gourmandes">
           <div class="content">
             <h3>Crêpes</h3>
-            <p>Des crêpes sucrées ou salées, préparées pour les petites et grosses faims.</p>
+            <p>Crêpes sucrées et salées.</p>
             <a class="btn btn-soft" href="crepes.html">Voir les crêpes</a>
           </div>
         </article>
-        <article class="special-card">
+
+        <article class="category-card">
           <img src="gaufres.png" alt="Gaufres gourmandes">
           <div class="content">
             <h3>Gaufres</h3>
-            <p>Gaufres au sucre, miel, Nutella, ou avec une boule de glace au choix.</p>
+            <p>Gaufres sucre, miel, Nutella ou glace.</p>
             <a class="btn btn-soft" href="gaufres.html">Voir les gaufres</a>
           </div>
         </article>
-        <article class="special-card">
-          <img src="boissons.png" alt="Milk-shakes gourmands">
+
+        <article class="category-card">
+          <img src="boissons.png" alt="Milk-shakes">
           <div class="content">
             <h3>Milk-shakes</h3>
-            <p>Des milk-shakes gourmands : fraise, Nutella, Oreo, vanille, Spéculoos ou M&M’s.</p>
+            <p>Fraise, Nutella, Oreo, vanille, Spéculoos ou M&M’s.</p>
             <a class="btn btn-soft" href="milkshakes.html">Voir les milk-shakes</a>
           </div>
         </article>
-        <article class="special-card">
+
+        <article class="category-card">
           <img src="boissons.png" alt="Jus locaux">
           <div class="content">
             <h3>Jus locaux</h3>
-            <p>Petites bouteilles de jus local selon les parfums disponibles.</p>
+            <p>Cerise, gingembre ou moubin.</p>
             <a class="btn btn-soft" href="jus.html">Voir les jus locaux</a>
           </div>
         </article>
@@ -95,16 +98,10 @@
     </section>
 
     <section class="section">
-      <div class="section-head">
-        <div>
-          <h2>Commandes rapides</h2>
-          <p>Tu peux aussi passer directement par les formules ou le panier.</p>
-        </div>
-      </div>
-      <div class="quick-grid">
+      <div class="category-grid">
         <a class="card" href="formules.html">
           <h2>Formules</h2>
-          <p class="note">Crêpe + milk-shake ou gaufre + milk-shake, avec choix personnalisés.</p>
+          <p class="note">Compose une formule crêpe + milk-shake ou gaufre + milk-shake.</p>
         </a>
         <a class="card" href="paiement.html">
           <h2>Panier & paiement</h2>
@@ -130,7 +127,7 @@
     </div>
   </div>
 </footer>
-<a class="btn btn-primary floating" id="floatingCart" href="paiement.html">Panier · 0€</a>
+<a class="btn btn-primary floating" href="paiement.html" data-cart-total>Panier · 0€</a>
 <script src="config.js"></script>
 <script src="app.js"></script>
 </body>

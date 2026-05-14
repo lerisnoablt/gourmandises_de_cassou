@@ -7,19 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="nav">
-    <a class="brand" href="index.html">
-      <span>Les Gourmandises de Cassou</span>
-      <small>Commande en ligne</small>
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">🥞</div>
+      <div class="logo-text">
+        <strong>Les Gourmandises de Cassou</strong>
+        <span data-opening>Ouvert tous les jours · à partir de 15h</span>
+      </div>
     </a>
-    <div class="nav-actions">
-      <a href="crepes.html">Crêpes</a>
-      <a href="gaufres.html">Gaufres</a>
-      <a href="milkshakes.html">Milk-shakes</a>
-      <a href="jus.html">Jus locaux</a>
-      <a href="formules.html">Formules</a>
-      <a href="paiement.html">Panier</a>
+    <div class="header-actions">
+      <a class="btn btn-soft" href="index.html">Accueil</a>
+      <a class="btn btn-primary" href="paiement.html" data-cart-total>Panier · 0€</a>
     </div>
   </div>
 </header>
@@ -56,7 +55,7 @@
           <input id="pickup" placeholder="Ex : 16h30">
 
           <label for="payment">Mode de paiement</label>
-          <select id="payment" class="form-control">
+          <select id="payment">
             <option>Sur place — espèces</option>
             <option>Sur place — carte</option>
             <option>PayPal</option>
@@ -80,9 +79,6 @@
           <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:15px" id="whatsappBtn">
             Envoyer la commande sur WhatsApp
           </button>
-          <p class="note" style="margin-top:12px">
-            La commande sera envoyée avec le détail du panier, le total, le prénom, l’heure de retrait et le mode de paiement choisi.
-          </p>
         </div>
       </div>
     </section>
@@ -104,7 +100,7 @@
     </div>
   </div>
 </footer>
-<a class="btn btn-primary floating" id="floatingCart" href="paiement.html">Panier · 0€</a>
+<a class="btn btn-primary floating" href="paiement.html" data-cart-total>Panier · 0€</a>
 <script src="config.js"></script>
 <script src="app.js"></script>
 </body>
