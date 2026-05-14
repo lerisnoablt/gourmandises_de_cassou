@@ -52,6 +52,13 @@ function renderMenu(){
   grid.innerHTML = list.map(renderProductCard).join("");
 }
 
+function renderThumb(item){
+  if(item.thumbSprite){
+    return `<div class="item-thumb is-sprite" role="img" aria-label="${item.name}" style="background-image:url('${item.thumbSprite}');background-size:${item.thumbSize || 'cover'};background-position:${item.thumbPosition || 'center'};"></div>`;
+  }
+  return `<img class="item-thumb" src="${item.thumb || 'hero.png'}" alt="${item.name}">`;
+}
+
 function renderProductCard(product){
   if(product.type === "combo") return renderComboCard(product);
 
@@ -61,7 +68,7 @@ function renderProductCard(product){
   return `
     <article class="item">
       <div class="item-head">
-        <img class="item-thumb" src="${product.thumb || 'hero.png'}" alt="${product.name}">
+        ${renderThumb(product)}
         <div class="item-main">
           <div class="row-top">
             <h3>${product.name}</h3>
@@ -86,7 +93,7 @@ function renderComboCard(combo){
   return `
     <article class="item">
       <div class="item-head">
-        <img class="item-thumb" src="${combo.thumb || 'hero.png'}" alt="${combo.name}">
+        ${renderThumb(combo)}
         <div class="item-main">
           <div class="row-top">
             <h3>${combo.name}</h3>

@@ -13,28 +13,29 @@ const CONFIG = {
 };
 
 const PRODUCTS = [
-  { id:"crepe-steak-jambon-fromage", categoryId:"crepes", type:"simple", name:"Crêpe steak jambon fromage", price:6, desc:"Crêpe salée complète et gourmande.", badge:"Salée", thumb:"thumb-crepe-salee.png" },
-  { id:"crepe-jambon-fromage", categoryId:"crepes", type:"simple", name:"Crêpe jambon fromage", price:4, desc:"Classique, simple et efficace.", badge:"Salée", thumb:"thumb-crepe-salee.png" },
-  { id:"crepe-steak-fromage", categoryId:"crepes", type:"simple", name:"Crêpe steak fromage", price:5, desc:"Crêpe salée avec steak et fromage.", badge:"Salée", thumb:"thumb-crepe-salee.png" },
-  { id:"crepe-nutella", categoryId:"crepes", type:"simple", name:"Crêpe Nutella", price:3.5, desc:"Crêpe sucrée au Nutella.", badge:"Nutella", thumb:"thumb-crepe-sucree.png" },
-  { id:"crepe-miel", categoryId:"crepes", type:"simple", name:"Crêpe au miel", price:3, desc:"Crêpe sucrée au miel.", badge:"Miel", thumb:"thumb-crepe-sucree.png" },
-  { id:"crepe-sucre", categoryId:"crepes", type:"simple", name:"Crêpe sucre", price:2.5, desc:"Crêpe sucrée simple.", badge:"Sucre", thumb:"thumb-crepe-sucree.png" },
+  { id:"crepe-steak-jambon-fromage", categoryId:"crepes", type:"simple", name:"Crêpe steak jambon fromage", price:6, desc:"Crêpe salée complète et gourmande.", badge:"Salée", thumbSprite:"sprite-crepes-salees.png", thumbSize:"300% 100%", thumbPosition:"0% 50%" },
+  { id:"crepe-jambon-fromage", categoryId:"crepes", type:"simple", name:"Crêpe jambon fromage", price:4, desc:"Classique, simple et efficace.", badge:"Salée", thumbSprite:"sprite-crepes-salees.png", thumbSize:"300% 100%", thumbPosition:"50% 50%" },
+  { id:"crepe-steak-fromage", categoryId:"crepes", type:"simple", name:"Crêpe steak fromage", price:5, desc:"Crêpe salée avec steak et fromage.", badge:"Salée", thumbSprite:"sprite-crepes-salees.png", thumbSize:"300% 100%", thumbPosition:"100% 50%" },
 
-  { id:"gaufre-nutella", categoryId:"gaufres", type:"simple", name:"Gaufre Nutella", price:5, desc:"Gaufre généreuse au Nutella.", badge:"Nutella", thumb:"thumb-gaufre.png" },
-  { id:"gaufre-miel", categoryId:"gaufres", type:"simple", name:"Gaufre miel", price:5, desc:"Gaufre sucrée au miel.", badge:"Miel", thumb:"thumb-gaufre.png" },
-  { id:"gaufre-sucre", categoryId:"gaufres", type:"simple", name:"Gaufre sucre", price:5, desc:"Gaufre sucrée simple.", badge:"Sucre", thumb:"thumb-gaufre.png" },
-  { id:"gaufre-glace", categoryId:"gaufres", type:"simple", name:"Gaufre + boule de glace", price:7, desc:"Gaufre avec boule de glace au choix.", badge:"Glace", thumb:"thumb-gaufre.png" },
+  { id:"crepe-nutella", categoryId:"crepes", type:"simple", name:"Crêpe Nutella", price:3.5, desc:"Crêpe sucrée au Nutella.", badge:"Nutella", thumbSprite:"sprite-crepes-sucrees.png", thumbSize:"300% 100%", thumbPosition:"0% 50%" },
+  { id:"crepe-miel", categoryId:"crepes", type:"simple", name:"Crêpe au miel", price:3, desc:"Crêpe sucrée au miel.", badge:"Miel", thumbSprite:"sprite-crepes-sucrees.png", thumbSize:"300% 100%", thumbPosition:"50% 50%" },
+  { id:"crepe-sucre", categoryId:"crepes", type:"simple", name:"Crêpe sucre", price:2.5, desc:"Crêpe sucrée simple.", badge:"Sucre", thumbSprite:"sprite-crepes-sucrees.png", thumbSize:"300% 100%", thumbPosition:"100% 50%" },
 
-  { id:"milk-fraise", categoryId:"milkshakes", type:"simple", name:"Milk-shake fraise", price:5, desc:"Milk-shake frais et fruité.", badge:"Fraise", thumb:"thumb-milkshake.png" },
-  { id:"milk-nutella", categoryId:"milkshakes", type:"simple", name:"Milk-shake Nutella", price:5, desc:"Milk-shake gourmand au Nutella.", badge:"Nutella", thumb:"thumb-milkshake.png" },
-  { id:"milk-oreo", categoryId:"milkshakes", type:"simple", name:"Milk-shake Oreo", price:5, desc:"Milk-shake aux biscuits Oreo.", badge:"Oreo", thumb:"thumb-milkshake.png" },
-  { id:"milk-vanille", categoryId:"milkshakes", type:"simple", name:"Milk-shake vanille", price:5, desc:"Milk-shake classique à la vanille.", badge:"Vanille", thumb:"thumb-milkshake.png" },
-  { id:"milk-speculoos", categoryId:"milkshakes", type:"simple", name:"Milk-shake Spéculoos", price:5, desc:"Milk-shake au goût spéculoos.", badge:"Spéculoos", thumb:"thumb-milkshake.png" },
-  { id:"milk-mms", categoryId:"milkshakes", type:"simple", name:"Milk-shake M&M’s", price:5, desc:"Milk-shake gourmand aux M&M’s.", badge:"M&M’s", thumb:"thumb-milkshake.png" },
+  { id:"gaufre-nutella", categoryId:"gaufres", type:"simple", name:"Gaufre Nutella", price:5, desc:"Gaufre généreuse au Nutella.", badge:"Nutella", thumbSprite:"sprite-gaufres.png", thumbSize:"200% 200%", thumbPosition:"0% 0%" },
+  { id:"gaufre-miel", categoryId:"gaufres", type:"simple", name:"Gaufre miel", price:5, desc:"Gaufre sucrée au miel.", badge:"Miel", thumbSprite:"sprite-gaufres.png", thumbSize:"200% 200%", thumbPosition:"100% 0%" },
+  { id:"gaufre-sucre", categoryId:"gaufres", type:"simple", name:"Gaufre sucre", price:5, desc:"Gaufre sucrée simple.", badge:"Sucre", thumbSprite:"sprite-gaufres.png", thumbSize:"200% 200%", thumbPosition:"0% 100%" },
+  { id:"gaufre-glace", categoryId:"gaufres", type:"simple", name:"Gaufre + boule de glace", price:7, desc:"Gaufre avec boule de glace au choix.", badge:"Glace", thumbSprite:"sprite-gaufres.png", thumbSize:"200% 200%", thumbPosition:"100% 100%" },
 
-  { id:"jus-cerise", categoryId:"jus", type:"simple", name:"Jus local cerise", price:2.5, desc:"Petite bouteille.", badge:"Cerise", thumb:"thumb-jus.png" },
-  { id:"jus-gingembre", categoryId:"jus", type:"simple", name:"Jus local gingembre", price:2.5, desc:"Petite bouteille.", badge:"Gingembre", thumb:"thumb-jus.png" },
-  { id:"jus-monbin", categoryId:"jus", type:"simple", name:"Jus local monbin", price:2.5, desc:"Petite bouteille.", badge:"Monbin", thumb:"thumb-jus.png" },
+  { id:"milk-fraise", categoryId:"milkshakes", type:"simple", name:"Milk-shake fraise", price:5, desc:"Milk-shake frais et fruité.", badge:"Fraise", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"0% 0%" },
+  { id:"milk-nutella", categoryId:"milkshakes", type:"simple", name:"Milk-shake Nutella", price:5, desc:"Milk-shake gourmand au Nutella.", badge:"Nutella", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"50% 0%" },
+  { id:"milk-oreo", categoryId:"milkshakes", type:"simple", name:"Milk-shake Oreo", price:5, desc:"Milk-shake aux biscuits Oreo.", badge:"Oreo", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"100% 0%" },
+  { id:"milk-vanille", categoryId:"milkshakes", type:"simple", name:"Milk-shake vanille", price:5, desc:"Milk-shake classique à la vanille.", badge:"Vanille", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"0% 100%" },
+  { id:"milk-speculoos", categoryId:"milkshakes", type:"simple", name:"Milk-shake Spéculoos", price:5, desc:"Milk-shake au goût spéculoos.", badge:"Spéculoos", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"50% 100%" },
+  { id:"milk-mms", categoryId:"milkshakes", type:"simple", name:"Milk-shake M&M’s", price:5, desc:"Milk-shake gourmand aux M&M’s.", badge:"M&M’s", thumbSprite:"sprite-milkshakes.png", thumbSize:"300% 200%", thumbPosition:"100% 100%" },
+
+  { id:"jus-cerise", categoryId:"jus", type:"simple", name:"Jus local cerise acérola", price:2.5, desc:"Petite bouteille de cerise acérola.", badge:"Acérola", thumbSprite:"sprite-jus-locaux.png", thumbSize:"300% 100%", thumbPosition:"0% 50%" },
+  { id:"jus-gingembre", categoryId:"jus", type:"simple", name:"Jus local gingembre", price:2.5, desc:"Petite bouteille.", badge:"Gingembre", thumbSprite:"sprite-jus-locaux.png", thumbSize:"300% 100%", thumbPosition:"50% 50%" },
+  { id:"jus-monbin", categoryId:"jus", type:"simple", name:"Jus local monbin", price:2.5, desc:"Petite bouteille au fruit monbin.", badge:"Monbin", thumbSprite:"sprite-jus-locaux.png", thumbSize:"300% 100%", thumbPosition:"100% 50%" },
 
   {
     id:"formule-crepe",

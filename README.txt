@@ -697,3 +697,158 @@ But de cette version :
 - t’aider à tester le site proprement ;
 - éviter d’oublier un détail avant de publier ;
 - préparer la mise en ligne avec un QR code.
+
+---
+
+## V9 — Intégration du vrai logo
+
+Ajouts et corrections principales :
+
+- intégration du **vrai logo** fourni ;
+- remplacement de l’ancien petit logo générique dans le header ;
+- ajout du logo dans le **footer** ;
+- ajout du logo sur la **page d’accueil** ;
+- ajout du logo comme **favicon** (icône de l’onglet du navigateur) ;
+- conservation du nom **Les Gourmandises de Cassou** à côté du logo pour une meilleure lisibilité.
+
+Fichiers principalement modifiés :
+
+- `index.html` : logo ajouté dans l’accueil ;
+- tous les fichiers `.html` : logo dans le header + favicon ;
+- `style.css` : style du logo header, footer et accueil ;
+- nouveau fichier : `logo-cassou.jpg`.
+
+---
+
+## V10 — Vignettes spécifiques par produit et correction visuelle du monbin
+
+Corrections principales :
+
+- chaque carte produit affiche maintenant une **mini image qui correspond exactement au produit** ;
+- les **milk-shakes** ont chacun leur propre visuel : fraise, Nutella, Oreo, vanille, Spéculoos, M&M’s ;
+- les **crêpes salées** ont chacune leur propre visuel : steak jambon fromage, jambon fromage, steak fromage ;
+- les **crêpes sucrées** ont chacune leur propre visuel : Nutella, miel, sucre ;
+- les **gaufres** ont chacune leur propre visuel : Nutella, miel, sucre, boule de glace ;
+- les **jus locaux** ont chacun leur propre visuel en **petite bouteille** ;
+- correction du visuel du **monbin** : il n’est plus représenté comme un citron ;
+- le monbin est maintenant représenté comme le **fruit jaune/orangé du monbin** (yellow mombin / *Spondias mombin*) ;
+- amélioration de l’image principale des **jus locaux** pour montrer les petites bouteilles avec cerise, gingembre et monbin.
+
+Technique utilisée :
+
+- ajout de **sprites d’illustrations** pour afficher une vignette différente selon le produit ;
+- chaque produit possède maintenant une position de vignette dédiée dans `config.js`.
+
+Fichiers principalement modifiés :
+
+- `config.js` : nouvelles vignettes spécifiques par produit ;
+- `app.js` : affichage dynamique des vignettes produit ;
+- `style.css` : affichage des sprites miniatures ;
+- `jus-locaux.png` : nouvelle image principale des jus locaux ;
+- nouveaux fichiers images :
+  - `sprite-milkshakes.png`
+  - `sprite-crepes-salees.png`
+  - `sprite-crepes-sucrees.png`
+  - `sprite-gaufres.png`
+  - `sprite-jus-locaux.png`
+
+---
+
+## V11 — Correction du jus cerise en cerise acérola
+
+Corrections principales :
+
+- le jus local "cerise" a été corrigé pour devenir visuellement une **cerise acérola** ;
+- les anciennes cerises classiques ont été retirées ;
+- la vignette du premier jus montre maintenant des **acérolas** (petits fruits rouges côtelés, aussi appelés cerises de la Barbade) ;
+- l’image principale de la page des jus locaux a aussi été remplacée pour afficher l’acérola correctement ;
+- le produit a été renommé dans le menu en **"Jus local cerise acérola"** ;
+- le badge du produit a été ajusté en **"Acérola"** ;
+- la description du produit a été ajustée pour préciser qu’il s’agit d’une petite bouteille de cerise acérola.
+
+Fichiers principalement modifiés :
+
+- `config.js` : nom, badge et description du jus à l’acérola ;
+- `sprite-jus-locaux.png` : nouvelle vignette des jus avec acérola ;
+- `jus-locaux.png` : nouvelle image principale des jus locaux ;
+- `README.txt` : ajout de la version V11.
+
+
+---
+
+## V12 — Mise à jour finale après validation des illustrations
+
+Cette version regroupe la correction finale du site après validation des illustrations.
+
+Corrections principales :
+
+- intégration des dernières illustrations validées dans le site ;
+- confirmation du jus **cerise acérola** dans le menu ;
+- mise à jour des textes visibles de la catégorie **Jus locaux** pour afficher :
+  - cerise acérola ;
+  - gingembre ;
+  - monbin ;
+- conservation de toutes les améliorations précédentes :
+  - logo intégré ;
+  - mode clair / sombre ;
+  - panier multi-pages ;
+  - formules personnalisables ;
+  - vignettes spécifiques par produit ;
+  - README et checklist.
+
+But de cette version :
+
+- avoir une version finale cohérente entre les illustrations, les noms des produits et les textes visibles sur le site.
+
+
+---
+
+## V13 — Amélioration du design général
+
+Cette version se concentre surtout sur l’apparence globale du site, sans casser le fonctionnement existant.
+
+Améliorations principales :
+
+- design global plus propre, plus moderne et plus gourmand ;
+- hero d’accueil retravaillé avec une meilleure présence visuelle ;
+- couleurs raffinées et harmonisées ;
+- cartes catégories plus élégantes ;
+- cartes produits plus lisibles ;
+- prix mieux mis en valeur ;
+- contrôles `+` et `−` plus propres ;
+- meilleure hiérarchie visuelle dans les sections ;
+- footer plus premium ;
+- mode sombre amélioré pour rester cohérent avec le nouveau design ;
+- légères améliorations de textes sur l’accueil et la page panier.
+
+Fichiers principalement modifiés :
+
+- `style.css` : amélioration majeure du design ;
+- `index.html` : amélioration des textes de la page d’accueil ;
+- `paiement.html` : texte plus propre pour la commande ;
+- `README.txt` : ajout de la version V13.
+
+
+---
+
+## V14 — Direction artistique premium
+
+Cette version pousse le design un peu plus loin, avec une direction plus premium et plus “marque”.
+
+Améliorations principales :
+
+- accueil plus impactant ;
+- fond plus travaillé avec un léger motif ;
+- header plus élégant ;
+- logo mieux mis en valeur ;
+- cartes catégories plus premium ;
+- cartes produits plus modernes ;
+- effets au survol plus propres ;
+- meilleures ombres et meilleurs arrondis ;
+- prix et badges plus visibles ;
+- mode sombre retravaillé pour suivre le style premium ;
+- petites animations légères pour rendre le site plus vivant.
+
+Fichier principalement modifié :
+
+- `style.css`

@@ -222,3 +222,44 @@ Avant de publier, vérifier :
 - message WhatsApp ;
 - affichage mobile.
 
+
+
+---
+
+## 15. Vérification des nouvelles mini images produit
+
+À vérifier :
+
+- les mini images correspondent bien au vrai produit ;
+- `Milk-shake Oreo` montre bien un visuel Oreo ;
+- `Milk-shake Nutella` montre bien un visuel chocolat / Nutella ;
+- `Milk-shake fraise` montre bien un visuel fraise ;
+- `Milk-shake vanille` montre bien un visuel vanille ;
+- `Milk-shake Spéculoos` montre bien un visuel Spéculoos ;
+- `Milk-shake M&M’s` montre bien un visuel avec bonbons M&M’s ;
+- `Jus local monbin` montre bien un fruit monbin et non un citron ;
+- les jus sont bien présentés en petite bouteille.
+
+
+---
+
+## 16. Vérification spécifique du jus cerise acérola
+
+À vérifier :
+
+- le premier jus n’utilise plus des cerises classiques ;
+- le visuel montre bien des **cerises acérola** ;
+- le produit s’affiche comme **Jus local cerise acérola** ;
+- le badge du produit affiche **Acérola** ;
+- l’image principale de la page jus est cohérente avec l’acérola.
+
+
+---
+
+## 17. Vérification des textes visibles après la correction des illustrations
+
+À vérifier :
+
+- la page d’accueil affiche bien **Cerise acérola, gingembre ou monbin** ;
+- la page `jus.html` affiche bien **cerise acérola, gingembre ou monbin** ;
+- les vignettes, le nom produit et le texte visible sont cohérents entre eux.
