@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Les Gourmandises de Cassou — Gaufres</title>
+<link href="style.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+
+<link href="assets/images/logo-cassou.webp" rel="icon" type="image/webp"/>
+</head>
+<body>
+<header class="header">
+<div class="header-inner">
+<a class="logo" href="index.html">
+<img alt="Logo Les Gourmandises de Cassou" class="logo-image" decoding="async" fetchpriority="high" loading="eager" src="assets/images/logo-cassou.webp"/>
+<div class="logo-text">
+<strong>Les Gourmandises de Cassou</strong>
+<span>Crêpes, gaufres et boissons gourmandes</span>
+</div>
+</a>
+<div class="header-actions">
+<a class="btn btn-soft" href="index.html">Accueil</a>
+<a class="btn btn-primary" data-cart-total="" href="paiement.html">Panier · 0€</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="hero">
+<div class="hero-copy">
+<span class="tag" data-opening="">Ouvert tous les jours · à partir de 15h</span>
+<h1>Gaufres</h1>
+<p class="lead">Choisis ta gaufre et ajoute-la au panier.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="paiement.html">Voir mon panier</a>
+<a class="btn btn-soft" href="index.html#categories">Changer de catégorie</a>
+</div>
+</div>
+<div class="hero-visual">
+<img alt="Gaufres" decoding="async" loading="eager" src="assets/images/gaufres.webp"/>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div>
+<h2>Menu</h2>
+<p>Ajoute les produits souhaités au panier avec les boutons + et −.</p>
+</div>
+</div>
+<div class="menu-grid" data-category-id="gaufres" id="menuGrid"></div>
+</section>
+</div>
+</main>
+<footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-brand">
+<img alt="Logo Les Gourmandises de Cassou" class="footer-logo" decoding="async" loading="lazy" src="assets/images/logo-cassou.webp"/>
+<div>
+<h3>Les Gourmandises de Cassou</h3>
+<p>Crêpes, gaufres, milk-shakes et jus locaux à Kourou.</p>
+</div>
+</div>
+</div>
+<div>
+<h3>Contact</h3>
+<div class="icon-links brand-links">
+<a class="icon-link brand-link" data-phone-link="" href="tel:+594694130640">
+<span class="brand-icon phone-chip">📞</span>
+<span data-phone-text="">06 94 13 06 40</span>
+</a>
+<a class="icon-link brand-link" data-whatsapp-link="" href="#" rel="noopener" target="_blank">
+<span class="brand-icon"><img alt="WhatsApp" decoding="async" loading="lazy" src="assets/images/icon-whatsapp.webp"/></span>
+<span>WhatsApp</span>
+</a>
+<a class="icon-link brand-link" data-snap-link="" href="#" rel="noopener" target="_blank">
+<span class="brand-icon"><img alt="Snapchat" decoding="async" loading="lazy" src="assets/images/icon-snapchat.webp"/></span>
+<span>Snapchat</span>
+</a>
+<a class="icon-link brand-link" data-instagram-link="" href="#" rel="noopener" target="_blank">
+<span class="brand-icon"><img alt="Instagram" decoding="async" loading="lazy" src="assets/images/icon-instagram.webp"/></span>
+<span>Instagram</span>
+</a>
+</div>
+</div>
+<div>
+<h3>Infos pratiques</h3>
+<p><b>Lieu :</b> <span data-location="">Cité Lumière, Kourou</span><br/><b>Horaires :</b> tous les jours à partir de 15h</p>
+<div class="footer-quick-actions">
+<a class="btn btn-soft btn-route" data-route-link="" href="#">Obtenir l’itinéraire</a>
+</div>
+<p class="payment-brand-note"><b>Paiement :</b> espèces, carte, <span class="pay-brand-inline"><img alt="PayPal" decoding="async" loading="lazy" src="assets/images/icon-paypal.webp"/></span> PayPal, <span class="pay-brand-inline"><img alt="Revolut" decoding="async" loading="lazy" src="assets/images/icon-revolut.webp"/></span> Revolut.</p>
+</div>
+<div class="theme-toggle-wrap">
+<button class="theme-toggle" id="themeToggle" type="button">🌙 Mode sombre</button>
+</div>
+</div>
+</footer>
+<a class="btn btn-primary floating" data-cart-total="" href="paiement.html">Panier · 0€</a>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

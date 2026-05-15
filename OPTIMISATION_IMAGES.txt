@@ -1,0 +1,18 @@
+Optimisation images V16
+
+Poids images avant : 20.04 Mo
+Poids images après : 0.57 Mo
+Gain approximatif : 97.1%
+
+Détail après optimisation :
+- crepes.webp : 79.3 Ko
+- gaufres.webp : 75.7 Ko
+- hero.webp : 136.6 Ko
+- jus-locaux.webp : 63.4 Ko
+- logo-cassou.webp : 47.9 Ko
+- milkshakes.webp : 94.5 Ko
+- sprite-crepes-salees.webp : 13.3 Ko
+- sprite-crepes-sucrees.webp : 15.3 Ko
+- sprite-gaufres.webp : 27.1 Ko
+- sprite-jus-locaux.webp : 10.1 Ko
+- sprite-milkshakes.webp : 23.2 Ko
